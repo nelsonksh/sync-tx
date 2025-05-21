@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Transaction {
+  id        Int              @id @default(autoincrement())
+  txHash    String           @unique
+  cbor      String
+  addresses AddressToWatch[]
+  BlockHash String
+  BlockSlot Int
+
+  @@index([txHash])
+}
+
+model TransactionSyncTip {
+  id        Int    @id @default(autoincrement())
+  slot      Int    @unique
+  blockHash String @unique
+}
+
+enum LocalStateType {
+  Unspecified
+  Course
+  Assignment
+  ModuleRef
+  Treasury
+  Escrow
+  ContributorState
+}
+
+model AddressToWatch {
+  id                    Int             @id @default(autoincrement())
+  key                   String
+  value                 String          @unique
+  type                  LocalStateType? // Optional enum field
+  transactions          Transaction[]
+  introducedAtBlockHash String?
+  introducedAtSlot      Int?
+
+  @@index([key])
+  @@index([type])
+}
+
+model AddressToWatchSyncTip {
+  id        Int    @id @default(autoincrement())
+  slot      Int    @unique
+  blockHash String @unique
+}
