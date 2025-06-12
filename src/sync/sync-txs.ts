@@ -82,35 +82,53 @@ export async function syncTxs(miniBlockfrost: MiniBlockfrost) {
                                 const cbor = await miniBlockfrost.fetchTxCbor(tx.tx_hash);
 
                                 for (const match of blockAddress.matchingAddressesToWatch) {
+                                    try {
+                                        const existingTx = await prismaClient.transaction.findUnique({
+                                            where: { txHash: tx.tx_hash },
+                                            select: { txHash: true }
+                                        });
 
-                                    txOps.push(prismaClient.transaction.upsert({
-                                        where: { txHash: tx.tx_hash },
-                                        update: {
-                                            addresses: {
-                                                connect: addressConnects
-                                            }
-                                        },
-                                        create: {
-                                            txHash: tx.tx_hash,
-                                            cbor: cbor.cbor,
-                                            addresses: {
-                                                connect: addressConnects
-                                            },
-                                            BlockHash: block.hash,
-                                            BlockSlot: block.slot,
-                                        }
-                                    }));
+                                        if (!existingTx) {
+                                            // Create transaction (new)
+                                            txOps.push(prismaClient.transaction.create({
+                                                data: {
+                                                    txHash: tx.tx_hash,
+                                                    cbor: cbor.cbor,
+                                                    addresses: {
+                                                        connect: addressConnects
+                                                    },
+                                                    BlockHash: block.hash,
+                                                    BlockSlot: block.slot,
+                                                }
+                                            }));
 
-                                    saveUtxos({
-                                        prisma: prismaClient,
-                                        tx: {
-                                            txHash: tx.tx_hash,
-                                            cbor: cbor.cbor,
-                                            BlockHash: block.hash,
-                                            BlockSlot: block.slot,
+                                            // ✅ Save UTXOs only for new txs
+                                            await saveUtxos({
+                                                prisma: prismaClient,
+                                                tx: {
+                                                    txHash: tx.tx_hash,
+                                                    cbor: cbor.cbor,
+                                                    BlockHash: block.hash,
+                                                    BlockSlot: block.slot,
+                                                }
+                                            });
+                                        } else {
+                                            // Update transaction (existing) - just connect new addresses
+                                            txOps.push(prismaClient.transaction.update({
+                                                where: { txHash: tx.tx_hash },
+                                                data: {
+                                                    addresses: {
+                                                        connect: addressConnects
+                                                    }
+                                                }
+                                            }));
                                         }
-                                    })
+                                    } catch (error) {
+                                        console.log(`Failed to fetch transaction ${tx.tx_hash} for block ${block.hash}: ${error}`);
+                                        continue;
+                                    }
                                 }
+
                             } catch (error) {
                                 console.log(`Failed to fetch transaction ${tx.tx_hash} for block ${block.hash}: ${error}`);
                                 continue;
