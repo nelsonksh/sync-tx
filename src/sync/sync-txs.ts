@@ -1,6 +1,7 @@
-import { PrismaClient } from "./../prisma/generated/client";
-import seed from "./seed.json";
-import { MiniBlockfrost } from "./mini-bf";
+import { PrismaClient } from "../../prisma/generated/client";
+import seed from "../seed.json";
+import { MiniBlockfrost } from "../mini-bf";
+import { saveUtxos } from "./sync-utxos";
 
 export async function syncTxs(miniBlockfrost: MiniBlockfrost) {
     const prismaClient = new PrismaClient();
@@ -99,6 +100,16 @@ export async function syncTxs(miniBlockfrost: MiniBlockfrost) {
                                             BlockSlot: block.slot,
                                         }
                                     }));
+
+                                    saveUtxos({
+                                        prisma: prismaClient,
+                                        tx: {
+                                            txHash: tx.tx_hash,
+                                            cbor: cbor.cbor,
+                                            BlockHash: block.hash,
+                                            BlockSlot: block.slot,
+                                        }
+                                    })
                                 }
                             } catch (error) {
                                 console.log(`Failed to fetch transaction ${tx.tx_hash} for block ${block.hash}: ${error}`);

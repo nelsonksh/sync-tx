@@ -1,13 +1,13 @@
-import { LocalStateType, PrismaClient } from "../prisma/generated/client"
-import seed from "./seed.json";
+import { LocalStateType, PrismaClient } from "../../prisma/generated/client"; 
+import seed from "../seed.json";
 // import { logger } from "../../logger";
 import { deserializeTx } from "@meshsdk/core-csl";
-import { Transaction } from "./transaction";
-import { deriveInstanceAddress } from "./derive-instance-address";
+import { Transaction } from "../types/transaction";
+import { deriveInstanceAddress } from "../utils/derive-instance-address";
 import { hexToString } from "@meshsdk/common";
-import { MiniBlockfrost } from "./mini-bf";
-import { Network } from "./network";
-import { AndamioConfig } from "./andamio-config";
+import { MiniBlockfrost } from "../mini-bf";
+import { Network } from "../types/network";
+import { AndamioConfig } from "../types/andamio-config";
 
 export async function syncInstanceAddresses(miniBlockfrost: MiniBlockfrost, network: Network, andamioConfig: AndamioConfig) {
     const prismaClient = new PrismaClient()

@@ -27,7 +27,7 @@ async function main() {
                 orderBy: {
                     id: 'desc'
                 },
-                // take: 10,
+                take: 2,
                 // If you need to include relations, uncomment and specify properly:
                 // include: {
                 //     addresses: true
