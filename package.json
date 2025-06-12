@@ -7,6 +7,8 @@
     "seed": "tsx prisma/seed.ts"
   },
   "scripts": {
+    "db:pull": "prisma db pull",
+    "db:generate": "prisma generate",
     "db:update": "prisma migrate dev --name update && prisma generate",
     "build": "tsc",
     "start": "node dist/src/index.js",
@@ -23,6 +25,7 @@
     "@meshsdk/core-csl": "1.9.0-beta.47",
     "@prisma/client": "6.8.2",
     "cbor": "^10.0.3",
+    "dotenv": "^16.5.0",
     "prisma": "^6.8.2",
     "tsx": "^4.19.4"
   },

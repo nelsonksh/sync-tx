@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@andamiojs/sdk':
-        specifier: 0.1.2-beta
-        version: 0.1.2-beta(@babel/core@7.27.1)(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(prisma@6.8.2(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(typescript@5.8.3)(utf-8-validate@6.0.5)
       '@meshsdk/common':
         specifier: 1.9.0-beta.47
         version: 1.9.0-beta.47
@@ -26,6 +23,9 @@ importers:
       cbor:
         specifier: ^10.0.3
         version: 10.0.3
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       prisma:
         specifier: ^6.8.2
         version: 6.8.2(typescript@5.8.3)
@@ -42,9 +42,6 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
-
-  '@andamiojs/sdk@0.1.2-beta':
-    resolution: {integrity: sha512-y1feyFFLAid8Q2jPDOk27KkcvezJGUjSSG2rSwqlVUU+Omm4wlBeRSdbGUfC3MFOQnHaZlCL2XbIJpJlBEqESA==}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -479,41 +476,20 @@ packages:
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
 
-  '@meshsdk/common@1.9.0-beta.30':
-    resolution: {integrity: sha512-RbZJ7AyXb+hPcJ+DSFM33rxXVQxBHV42rtD0BRSQe0Ja+CqpRIRkFg1klDQmPpTaNx4rbOV6yJ4lnnZuTkOrgw==}
-
   '@meshsdk/common@1.9.0-beta.47':
     resolution: {integrity: sha512-Hj6ws/wptwXn1hxG4Pq29GHlQtwIx9J7WUrA3TkSHw/5ztqyMrBbt5++w4jEn3AJHu8zg0po+MaHZFp4LHzNwQ==}
-
-  '@meshsdk/core-csl@1.9.0-beta.30':
-    resolution: {integrity: sha512-yAcXfxeShBt8FRTf7NmZ7RKb5dJTvFqglH4vtCXWnaodPYQQlfKmV1uSmRoF3DPMopvKYDZ1jArENYMcq2WJ+g==}
 
   '@meshsdk/core-csl@1.9.0-beta.47':
     resolution: {integrity: sha512-onyddo1TUGKghZA+utVw2tgYgPaI8PCgYL3TiUmeHg88C2U3rZS0+tEqTZh5yJoXk2zGUfFquE+LqwR2rgUSXw==}
 
-  '@meshsdk/core-cst@1.9.0-beta.30':
-    resolution: {integrity: sha512-nM96Vx9OEHFvj6FTvD1nNesaOQL6OCPCWyHcpmFT33cVGyFseyBBS8ChhMwv1zlCRDTEMgXsHERTKGbj9tDUnQ==}
-
   '@meshsdk/core-cst@1.9.0-beta.47':
     resolution: {integrity: sha512-/BBryx1G6VUrK+letWQRgVWHL+kTWbsBw1fprarvLetp1CWfbUlSq8oMFANBK/dyxHYHkwm8+0SoEzH741DmvQ==}
-
-  '@meshsdk/core@1.9.0-beta.30':
-    resolution: {integrity: sha512-0oC/bgG8e1aYTwfUuvYZ/zAfoMI9KSJloMbtUAcb/iisaLKlJ0u++Pj4DnF7FsiHecx26Pt/WkOf7u4yzj6c3A==}
 
   '@meshsdk/core@1.9.0-beta.47':
     resolution: {integrity: sha512-H63RvN4oj6YshhJ4mJFkBADrSwxXKFYoYCZ1+jhZgox/F1NBrKw4f6nOJovvxNPUXuRiNHHiml/DexQlVfxY1w==}
 
-  '@meshsdk/provider@1.9.0-beta.30':
-    resolution: {integrity: sha512-GUFzLc1C256shjyN4pd5WN7VY0LtXXqC5rYz+pX9+NxDrofjFues8WXaYG0jl1Ya3AxqHHtfSPh503N7UY3iuQ==}
-
   '@meshsdk/provider@1.9.0-beta.47':
     resolution: {integrity: sha512-I9cq4SlLUF+SfxzO+J+y+7usPzq3EnnXlJU6GHHN/80g4f2ErL8zROeA010H/QRU+5s6RSkmTiJK4m5ksAZVig==}
-
-  '@meshsdk/react@1.9.0-beta.30':
-    resolution: {integrity: sha512-tnntn0KOuvov5Qo6X69nzUx1Mnk/9b6pfPKKElI/rosNK20hLZLBFJ3wnSmhjpY7KbDP14s3a7LYSiyjSEVcSg==}
-    peerDependencies:
-      react: '>=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc'
-      react-dom: '>=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc'
 
   '@meshsdk/react@1.9.0-beta.47':
     resolution: {integrity: sha512-35qm36sLyldgYhjS/Tr65f+m2IAEFazG7FsnLFt14KqrlM1d0/enbF301mD7XCgV6TfXZRBPToVBZrw0iwNAaw==}
@@ -521,20 +497,11 @@ packages:
       react: '>=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc'
       react-dom: '>=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc'
 
-  '@meshsdk/transaction@1.9.0-beta.30':
-    resolution: {integrity: sha512-fnMUNKsF3QcjPSH2koPpHcd9phypPlvZ0YY+vGKNa14bd2YttHtJMsvjWuGxFBZcHOJLs37A69Ag0vXO2L6OYg==}
-
   '@meshsdk/transaction@1.9.0-beta.47':
     resolution: {integrity: sha512-l8kBjpVVud3E88PrDT3IOoHa6f1kH1Hddgreiirnf1PIhmbAQGP+QxyXdocWTMMxb0F/UXYiElroELbOru2cCg==}
 
-  '@meshsdk/wallet@1.9.0-beta.30':
-    resolution: {integrity: sha512-tTfrzfbOWrrOzXokuw2a0OZXY+PH83fJ4P7jlAKoR9uGi7Fj3KYyCAw0vRr8XAUkIgSvcmmSpyJ3jGASHhKD9A==}
-
   '@meshsdk/wallet@1.9.0-beta.47':
     resolution: {integrity: sha512-0ssm76C7DoI+2ijijrrwZ2jM6mriSCMdxIekNaZt7oAM+TwOxvqOTQHC/YVX7qX2QHuPnl6e1ilFdQiuyka+tw==}
-
-  '@meshsdk/web3-sdk@0.0.17':
-    resolution: {integrity: sha512-GmMB+AhE9do6gLgXVveu7mk5+egsqi8+luuFuA6n8K9fSECIcn2fHrYFzVvx70/5IpRBotSXgrNzsUpYoRCl/Q==}
 
   '@meshsdk/web3-sdk@0.0.26':
     resolution: {integrity: sha512-HCEOXYeeE569S1T4nILhu9E00an8ya+jtrn5t85NIWYwNxmMhoqjSrxfx5tfEXSN1g2SukuDqViAUZPLuwQjHg==}
@@ -562,18 +529,6 @@ packages:
   '@peculiar/webcrypto@1.5.0':
     resolution: {integrity: sha512-BRs5XUAwiyCDQMsVA9IDvDa7UBR9gAvPHgugOeGng3YN6vJ9JYonyDc0lNczErgtCWtucjR5N7VtaonboD/ezg==}
     engines: {node: '>=10.12.0'}
-
-  '@prisma/client@6.7.0':
-    resolution: {integrity: sha512-+k61zZn1XHjbZul8q6TdQLpuI/cvyfil87zqK2zpreNIXyXtpUv3+H/oM69hcsFcZXaokHJIzPAt5Z8C8eK2QA==}
-    engines: {node: '>=18.18'}
-    peerDependencies:
-      prisma: '*'
-      typescript: '>=5.1.0'
-    peerDependenciesMeta:
-      prisma:
-        optional: true
-      typescript:
-        optional: true
 
   '@prisma/client@6.8.2':
     resolution: {integrity: sha512-5II+vbyzv4si6Yunwgkj0qT/iY0zyspttoDrL3R4BYgLdp42/d2C8xdi9vqkrYtKt9H32oFIukvyw3Koz5JoDg==}
@@ -934,12 +889,6 @@ packages:
   '@scure/base@1.2.5':
     resolution: {integrity: sha512-9rE6EOVeIQzt5TSu4v+K523F8u6DhBsoZWPGKlnCshhlDhy0kJzUX4V+tr2dWmzF1GdekvThABoEQBGBQI7xZw==}
 
-  '@sidan-lab/sidan-csl-rs-browser@0.9.21':
-    resolution: {integrity: sha512-oVF+L+rDM+stR2CYnYm7wpHgSt1IifVvrhs3DZGqKAwDH7oFdVbwyZeiQaUEH0nxt+/dqdj7nW2dbCXFBtUC2g==}
-
-  '@sidan-lab/sidan-csl-rs-nodejs@0.9.21':
-    resolution: {integrity: sha512-Nkb/iB6D3GNvvSk4aPpL6i4Y3LwZi6C/Ogbb4OuHy756bl9vXTL+MlFkOO3flWZkB+IxwU1RKQe/xTJ/vnv7jg==}
-
   '@sidan-lab/whisky-js-browser@1.0.4':
     resolution: {integrity: sha512-/Sc0YuU0KKacYvsev471oA+o73YKqtxcd7JQivrI86K+YL59k+rNqTly1H+rXo+hd14qqrUe8NTvVkMAQ4zr9g==}
 
@@ -972,21 +921,11 @@ packages:
   '@types/json-bigint@1.0.4':
     resolution: {integrity: sha512-ydHooXLbOmxBbubnA7Eh+RpBzuaIiQjh8WGJYQB50JFGFrdxW7JzVlyEV7fAXw0T2sqJ1ysTneJbiyNLqZRAag==}
 
-  '@types/node@20.14.10':
-    resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
-
   '@types/node@22.15.19':
     resolution: {integrity: sha512-3vMNr4TzNQyjHcRZadojpRaD9Ofr6LsonZAoQ+HMUa/9ORTPoxVIw0e0mpqWpdjj8xybyCM+oKOUH2vwFu/oEw==}
 
-  '@utxorpc/sdk@0.6.2':
-    resolution: {integrity: sha512-2duxfbH8B7DX3ync8U7BUYIi6lzerYwb8lMpW6Ax1fv3zqmJE39lGsBRVozJU1X3ITSB526ODkhgUo8DHRLvtQ==}
-
   '@utxorpc/sdk@0.6.7':
     resolution: {integrity: sha512-wBRZLbSbpvQf9EkqjjKbPlv8VO1ovPITsPYu9R+39ScZ8Uywnj6G7vqv7UWZthX9tglwwDqNLoyM9k4QuJHBcQ==}
-
-  '@utxorpc/spec@0.10.1':
-    resolution: {integrity: sha512-0INat5xSjkTeqKr+JO3SMQQ2PxcfZNUi5wJja/Fpnp68f52eTJf4X4QGy7tzqYzMsK/ZYhRr95J+WUeM6Vbmwg==}
-    engines: {node: '>=20.0.0'}
 
   '@utxorpc/spec@0.16.0':
     resolution: {integrity: sha512-EK2M0TBp14MrRCYDuFeJ+bAS39RxxLLh+CD08h/YvAgxSv/4ZOBCf1/sxHAGCBGGndB4heZYFeuQ+i1i8vP5lw==}
@@ -1315,6 +1254,10 @@ packages:
 
   dom-walk@0.1.2:
     resolution: {integrity: sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==}
+
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+    engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -2216,9 +2159,6 @@ packages:
   uint8arrays@5.1.0:
     resolution: {integrity: sha512-vA6nFepEmlSKkMBnLBaUMVvAC4G3CTmO58C12y4sq6WPDOR7mOFYOi7GlrQ4djeSbP6JG9Pv9tJDM97PedRSww==}
 
-  undici-types@5.26.5:
-    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
@@ -2371,40 +2311,6 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
-
-  '@andamiojs/sdk@0.1.2-beta(@babel/core@7.27.1)(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(prisma@6.8.2(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(typescript@5.8.3)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.30
-      '@meshsdk/core': 1.9.0-beta.30(@babel/core@7.27.1)(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/core-csl': 1.9.0-beta.30
-      '@meshsdk/core-cst': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@prisma/client': 6.7.0(prisma@6.8.2(typescript@5.8.3))(typescript@5.8.3)
-      '@utxorpc/sdk': 0.6.7(@bufbuild/protobuf@1.10.1)
-      '@utxorpc/spec': 0.16.0
-      cbor: 10.0.3
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@bufbuild/protobuf'
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - '@types/react'
-      - '@types/react-dom'
-      - bare-buffer
-      - bufferutil
-      - debug
-      - encoding
-      - prisma
-      - react
-      - react-dom
-      - rxjs
-      - supports-color
-      - tailwindcss
-      - typescript
-      - utf-8-validate
 
   '@babel/code-frame@7.27.1':
     dependencies:
@@ -2913,29 +2819,12 @@ snapshots:
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
-  '@meshsdk/common@1.9.0-beta.30':
-    dependencies:
-      bech32: 2.0.0
-      bip39: 3.1.0
-      blake2b: 2.1.4
-      blakejs: 1.2.1
-
   '@meshsdk/common@1.9.0-beta.47':
     dependencies:
       bech32: 2.0.0
       bip39: 3.1.0
       blake2b: 2.1.4
       blakejs: 1.2.1
-
-  '@meshsdk/core-csl@1.9.0-beta.30':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.30
-      '@sidan-lab/sidan-csl-rs-browser': 0.9.21
-      '@sidan-lab/sidan-csl-rs-nodejs': 0.9.21
-      '@types/base32-encoding': 1.0.2
-      base32-encoding: 1.0.0
-      bech32: 2.0.0
-      json-bigint: 1.0.0
 
   '@meshsdk/core-csl@1.9.0-beta.47':
     dependencies:
@@ -2946,32 +2835,6 @@ snapshots:
       base32-encoding: 1.0.0
       bech32: 2.0.0
       json-bigint: 1.0.0
-
-  '@meshsdk/core-cst@1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@cardano-sdk/core': 0.45.8(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@cardano-sdk/crypto': 0.2.3
-      '@cardano-sdk/util': 0.15.7
-      '@harmoniclabs/cbor': 1.3.0
-      '@harmoniclabs/plutus-data': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)
-      '@harmoniclabs/uplc': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(@harmoniclabs/plutus-data@1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0))
-      '@meshsdk/common': 1.9.0-beta.30
-      '@types/base32-encoding': 1.0.2
-      base32-encoding: 1.0.0
-      bech32: 2.0.0
-      blakejs: 1.2.1
-      bn.js: 5.2.2
-    transitivePeerDependencies:
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - bufferutil
-      - encoding
-      - rxjs
-      - utf-8-validate
 
   '@meshsdk/core-cst@1.9.0-beta.47(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
     dependencies:
@@ -2998,36 +2861,6 @@ snapshots:
       - bufferutil
       - encoding
       - rxjs
-      - utf-8-validate
-
-  '@meshsdk/core@1.9.0-beta.30(@babel/core@7.27.1)(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.30
-      '@meshsdk/core-cst': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/provider': 1.9.0-beta.30(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/react': 1.9.0-beta.30(@babel/core@7.27.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/transaction': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/wallet': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@bufbuild/protobuf'
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - '@types/react'
-      - '@types/react-dom'
-      - bare-buffer
-      - bufferutil
-      - debug
-      - encoding
-      - react
-      - react-dom
-      - rxjs
-      - supports-color
-      - tailwindcss
       - utf-8-validate
 
   '@meshsdk/core@1.9.0-beta.47(@babel/core@7.27.1)(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
@@ -3059,27 +2892,6 @@ snapshots:
       - tailwindcss
       - utf-8-validate
 
-  '@meshsdk/provider@1.9.0-beta.30(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.30
-      '@meshsdk/core-cst': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@utxorpc/sdk': 0.6.2(@bufbuild/protobuf@1.10.1)
-      '@utxorpc/spec': 0.10.1
-      axios: 1.9.0
-    transitivePeerDependencies:
-      - '@bufbuild/protobuf'
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - bufferutil
-      - debug
-      - encoding
-      - rxjs
-      - utf-8-validate
-
   '@meshsdk/provider@1.9.0-beta.47(@bufbuild/protobuf@1.10.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
     dependencies:
       '@meshsdk/common': 1.9.0-beta.47
@@ -3098,42 +2910,6 @@ snapshots:
       - debug
       - encoding
       - rxjs
-      - utf-8-validate
-
-  '@meshsdk/react@1.9.0-beta.30(@babel/core@7.27.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@fabianbormann/cardano-peer-connect': 1.2.18(@babel/core@7.27.1)
-      '@meshsdk/common': 1.9.0-beta.30
-      '@meshsdk/transaction': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/wallet': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/web3-sdk': 0.0.17(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@radix-ui/react-dialog': 1.1.13(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@radix-ui/react-dropdown-menu': 2.1.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@radix-ui/react-icons': 1.3.2(react@19.1.0)
-      '@radix-ui/react-label': 2.1.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@radix-ui/react-tooltip': 1.2.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      class-variance-authority: 0.7.1
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      tailwind-merge: 2.6.0
-      tailwindcss-animate: 1.0.7
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - '@types/react'
-      - '@types/react-dom'
-      - bare-buffer
-      - bufferutil
-      - debug
-      - encoding
-      - rxjs
-      - supports-color
-      - tailwindcss
       - utf-8-validate
 
   '@meshsdk/react@1.9.0-beta.47(@babel/core@7.27.1)(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
@@ -3170,23 +2946,6 @@ snapshots:
       - tailwindcss
       - utf-8-validate
 
-  '@meshsdk/transaction@1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.30
-      '@meshsdk/core-cst': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      json-bigint: 1.0.0
-    transitivePeerDependencies:
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - bufferutil
-      - encoding
-      - rxjs
-      - utf-8-validate
-
   '@meshsdk/transaction@1.9.0-beta.47(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
     dependencies:
       '@cardano-sdk/core': 0.45.8(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
@@ -3206,24 +2965,6 @@ snapshots:
       - rxjs
       - utf-8-validate
 
-  '@meshsdk/wallet@1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.30
-      '@meshsdk/core-cst': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/transaction': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@simplewebauthn/browser': 13.1.0
-    transitivePeerDependencies:
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - bufferutil
-      - encoding
-      - rxjs
-      - utf-8-validate
-
   '@meshsdk/wallet@1.9.0-beta.47(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
     dependencies:
       '@meshsdk/common': 1.9.0-beta.47
@@ -3237,28 +2978,6 @@ snapshots:
       - '@harmoniclabs/bytestring'
       - '@harmoniclabs/crypto'
       - bufferutil
-      - encoding
-      - rxjs
-      - utf-8-validate
-
-  '@meshsdk/web3-sdk@0.0.17(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
-    dependencies:
-      '@meshsdk/common': 1.9.0-beta.47
-      '@meshsdk/core-cst': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@meshsdk/wallet': 1.9.0-beta.30(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
-      '@peculiar/webcrypto': 1.5.0
-      axios: 1.9.0
-      base32-encoding: 1.0.0
-      uuid: 11.1.0
-    transitivePeerDependencies:
-      - '@dcspark/cardano-multiplatform-lib-asmjs'
-      - '@dcspark/cardano-multiplatform-lib-browser'
-      - '@dcspark/cardano-multiplatform-lib-nodejs'
-      - '@harmoniclabs/bytestring'
-      - '@harmoniclabs/crypto'
-      - '@harmoniclabs/pair'
-      - bufferutil
-      - debug
       - encoding
       - rxjs
       - utf-8-validate
@@ -3326,11 +3045,6 @@ snapshots:
       pvtsutils: 1.3.6
       tslib: 2.8.1
       webcrypto-core: 1.8.1
-
-  '@prisma/client@6.7.0(prisma@6.8.2(typescript@5.8.3))(typescript@5.8.3)':
-    optionalDependencies:
-      prisma: 6.8.2(typescript@5.8.3)
-      typescript: 5.8.3
 
   '@prisma/client@6.8.2(prisma@6.8.2(typescript@5.8.3))(typescript@5.8.3)':
     optionalDependencies:
@@ -3599,10 +3313,6 @@ snapshots:
 
   '@scure/base@1.2.5': {}
 
-  '@sidan-lab/sidan-csl-rs-browser@0.9.21': {}
-
-  '@sidan-lab/sidan-csl-rs-nodejs@0.9.21': {}
-
   '@sidan-lab/whisky-js-browser@1.0.4': {}
 
   '@sidan-lab/whisky-js-nodejs@1.0.4': {}
@@ -3656,24 +3366,9 @@ snapshots:
 
   '@types/json-bigint@1.0.4': {}
 
-  '@types/node@20.14.10':
-    dependencies:
-      undici-types: 5.26.5
-
   '@types/node@22.15.19':
     dependencies:
       undici-types: 6.21.0
-
-  '@utxorpc/sdk@0.6.2(@bufbuild/protobuf@1.10.1)':
-    dependencies:
-      '@connectrpc/connect': 1.4.0(@bufbuild/protobuf@1.10.1)
-      '@connectrpc/connect-node': 1.4.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.1))
-      '@connectrpc/connect-web': 1.4.0(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.4.0(@bufbuild/protobuf@1.10.1))
-      '@types/node': 20.14.10
-      '@utxorpc/spec': 0.10.1
-      buffer: 6.0.3
-    transitivePeerDependencies:
-      - '@bufbuild/protobuf'
 
   '@utxorpc/sdk@0.6.7(@bufbuild/protobuf@1.10.1)':
     dependencies:
@@ -3684,10 +3379,6 @@ snapshots:
       buffer: 6.0.3
     transitivePeerDependencies:
       - '@bufbuild/protobuf'
-
-  '@utxorpc/spec@0.10.1':
-    dependencies:
-      '@bufbuild/protobuf': 1.10.1
 
   '@utxorpc/spec@0.16.0':
     dependencies:
@@ -4092,6 +3783,8 @@ snapshots:
       '@leichtgewicht/ip-codec': 2.0.5
 
   dom-walk@0.1.2: {}
+
+  dotenv@16.5.0: {}
 
   dunder-proto@1.0.1:
     dependencies:
@@ -4913,8 +4606,6 @@ snapshots:
   uint8arrays@5.1.0:
     dependencies:
       multiformats: 13.3.5
-
-  undici-types@5.26.5: {}
 
   undici-types@6.21.0: {}
 

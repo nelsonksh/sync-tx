@@ -33,19 +33,29 @@ export type AddressToWatch = $Result.DefaultSelection<Prisma.$AddressToWatchPayl
  * 
  */
 export type AddressToWatchSyncTip = $Result.DefaultSelection<Prisma.$AddressToWatchSyncTipPayload>
+/**
+ * Model MultiAsset
+ * 
+ */
+export type MultiAsset = $Result.DefaultSelection<Prisma.$MultiAssetPayload>
+/**
+ * Model Utxo
+ * 
+ */
+export type Utxo = $Result.DefaultSelection<Prisma.$UtxoPayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
   export const LocalStateType: {
-  Unspecified: 'Unspecified',
   Course: 'Course',
   Assignment: 'Assignment',
   ModuleRef: 'ModuleRef',
   Treasury: 'Treasury',
   Escrow: 'Escrow',
-  ContributorState: 'ContributorState'
+  ContributorState: 'ContributorState',
+  Unspecified: 'Unspecified'
 };
 
 export type LocalStateType = (typeof LocalStateType)[keyof typeof LocalStateType]
@@ -220,6 +230,26 @@ export class PrismaClient<
     * ```
     */
   get addressToWatchSyncTip(): Prisma.AddressToWatchSyncTipDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.multiAsset`: Exposes CRUD operations for the **MultiAsset** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MultiAssets
+    * const multiAssets = await prisma.multiAsset.findMany()
+    * ```
+    */
+  get multiAsset(): Prisma.MultiAssetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.utxo`: Exposes CRUD operations for the **Utxo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Utxos
+    * const utxos = await prisma.utxo.findMany()
+    * ```
+    */
+  get utxo(): Prisma.UtxoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -663,7 +693,9 @@ export namespace Prisma {
     Transaction: 'Transaction',
     TransactionSyncTip: 'TransactionSyncTip',
     AddressToWatch: 'AddressToWatch',
-    AddressToWatchSyncTip: 'AddressToWatchSyncTip'
+    AddressToWatchSyncTip: 'AddressToWatchSyncTip',
+    MultiAsset: 'MultiAsset',
+    Utxo: 'Utxo'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -682,7 +714,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "transaction" | "transactionSyncTip" | "addressToWatch" | "addressToWatchSyncTip"
+      modelProps: "transaction" | "transactionSyncTip" | "addressToWatch" | "addressToWatchSyncTip" | "multiAsset" | "utxo"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -982,6 +1014,154 @@ export namespace Prisma {
           }
         }
       }
+      MultiAsset: {
+        payload: Prisma.$MultiAssetPayload<ExtArgs>
+        fields: Prisma.MultiAssetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MultiAssetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MultiAssetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>
+          }
+          findFirst: {
+            args: Prisma.MultiAssetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MultiAssetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>
+          }
+          findMany: {
+            args: Prisma.MultiAssetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>[]
+          }
+          create: {
+            args: Prisma.MultiAssetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>
+          }
+          createMany: {
+            args: Prisma.MultiAssetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MultiAssetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>[]
+          }
+          delete: {
+            args: Prisma.MultiAssetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>
+          }
+          update: {
+            args: Prisma.MultiAssetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>
+          }
+          deleteMany: {
+            args: Prisma.MultiAssetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MultiAssetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MultiAssetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>[]
+          }
+          upsert: {
+            args: Prisma.MultiAssetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MultiAssetPayload>
+          }
+          aggregate: {
+            args: Prisma.MultiAssetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMultiAsset>
+          }
+          groupBy: {
+            args: Prisma.MultiAssetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MultiAssetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MultiAssetCountArgs<ExtArgs>
+            result: $Utils.Optional<MultiAssetCountAggregateOutputType> | number
+          }
+        }
+      }
+      Utxo: {
+        payload: Prisma.$UtxoPayload<ExtArgs>
+        fields: Prisma.UtxoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UtxoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UtxoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>
+          }
+          findFirst: {
+            args: Prisma.UtxoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UtxoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>
+          }
+          findMany: {
+            args: Prisma.UtxoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>[]
+          }
+          create: {
+            args: Prisma.UtxoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>
+          }
+          createMany: {
+            args: Prisma.UtxoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UtxoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>[]
+          }
+          delete: {
+            args: Prisma.UtxoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>
+          }
+          update: {
+            args: Prisma.UtxoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>
+          }
+          deleteMany: {
+            args: Prisma.UtxoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UtxoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UtxoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>[]
+          }
+          upsert: {
+            args: Prisma.UtxoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UtxoPayload>
+          }
+          aggregate: {
+            args: Prisma.UtxoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUtxo>
+          }
+          groupBy: {
+            args: Prisma.UtxoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UtxoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UtxoCountArgs<ExtArgs>
+            result: $Utils.Optional<UtxoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1070,6 +1250,8 @@ export namespace Prisma {
     transactionSyncTip?: TransactionSyncTipOmit
     addressToWatch?: AddressToWatchOmit
     addressToWatchSyncTip?: AddressToWatchSyncTipOmit
+    multiAsset?: MultiAssetOmit
+    utxo?: UtxoOmit
   }
 
   /* Types for Logging */
@@ -1218,6 +1400,37 @@ export namespace Prisma {
    */
   export type AddressToWatchCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransactionWhereInput
+  }
+
+
+  /**
+   * Count Type UtxoCountOutputType
+   */
+
+  export type UtxoCountOutputType = {
+    MultiAsset: number
+  }
+
+  export type UtxoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MultiAsset?: boolean | UtxoCountOutputTypeCountMultiAssetArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UtxoCountOutputType without action
+   */
+  export type UtxoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UtxoCountOutputType
+     */
+    select?: UtxoCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UtxoCountOutputType without action
+   */
+  export type UtxoCountOutputTypeCountMultiAssetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MultiAssetWhereInput
   }
 
 
@@ -5469,6 +5682,2263 @@ export namespace Prisma {
 
 
   /**
+   * Model MultiAsset
+   */
+
+  export type AggregateMultiAsset = {
+    _count: MultiAssetCountAggregateOutputType | null
+    _avg: MultiAssetAvgAggregateOutputType | null
+    _sum: MultiAssetSumAggregateOutputType | null
+    _min: MultiAssetMinAggregateOutputType | null
+    _max: MultiAssetMaxAggregateOutputType | null
+  }
+
+  export type MultiAssetAvgAggregateOutputType = {
+    id: number | null
+    quantity: number | null
+    utxoId: number | null
+  }
+
+  export type MultiAssetSumAggregateOutputType = {
+    id: number | null
+    quantity: bigint | null
+    utxoId: number | null
+  }
+
+  export type MultiAssetMinAggregateOutputType = {
+    id: number | null
+    policyId: string | null
+    assetName: string | null
+    quantity: bigint | null
+    utxoId: number | null
+  }
+
+  export type MultiAssetMaxAggregateOutputType = {
+    id: number | null
+    policyId: string | null
+    assetName: string | null
+    quantity: bigint | null
+    utxoId: number | null
+  }
+
+  export type MultiAssetCountAggregateOutputType = {
+    id: number
+    policyId: number
+    assetName: number
+    quantity: number
+    utxoId: number
+    _all: number
+  }
+
+
+  export type MultiAssetAvgAggregateInputType = {
+    id?: true
+    quantity?: true
+    utxoId?: true
+  }
+
+  export type MultiAssetSumAggregateInputType = {
+    id?: true
+    quantity?: true
+    utxoId?: true
+  }
+
+  export type MultiAssetMinAggregateInputType = {
+    id?: true
+    policyId?: true
+    assetName?: true
+    quantity?: true
+    utxoId?: true
+  }
+
+  export type MultiAssetMaxAggregateInputType = {
+    id?: true
+    policyId?: true
+    assetName?: true
+    quantity?: true
+    utxoId?: true
+  }
+
+  export type MultiAssetCountAggregateInputType = {
+    id?: true
+    policyId?: true
+    assetName?: true
+    quantity?: true
+    utxoId?: true
+    _all?: true
+  }
+
+  export type MultiAssetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MultiAsset to aggregate.
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MultiAssets to fetch.
+     */
+    orderBy?: MultiAssetOrderByWithRelationInput | MultiAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MultiAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MultiAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MultiAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MultiAssets
+    **/
+    _count?: true | MultiAssetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MultiAssetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MultiAssetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MultiAssetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MultiAssetMaxAggregateInputType
+  }
+
+  export type GetMultiAssetAggregateType<T extends MultiAssetAggregateArgs> = {
+        [P in keyof T & keyof AggregateMultiAsset]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMultiAsset[P]>
+      : GetScalarType<T[P], AggregateMultiAsset[P]>
+  }
+
+
+
+
+  export type MultiAssetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MultiAssetWhereInput
+    orderBy?: MultiAssetOrderByWithAggregationInput | MultiAssetOrderByWithAggregationInput[]
+    by: MultiAssetScalarFieldEnum[] | MultiAssetScalarFieldEnum
+    having?: MultiAssetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MultiAssetCountAggregateInputType | true
+    _avg?: MultiAssetAvgAggregateInputType
+    _sum?: MultiAssetSumAggregateInputType
+    _min?: MultiAssetMinAggregateInputType
+    _max?: MultiAssetMaxAggregateInputType
+  }
+
+  export type MultiAssetGroupByOutputType = {
+    id: number
+    policyId: string
+    assetName: string
+    quantity: bigint
+    utxoId: number | null
+    _count: MultiAssetCountAggregateOutputType | null
+    _avg: MultiAssetAvgAggregateOutputType | null
+    _sum: MultiAssetSumAggregateOutputType | null
+    _min: MultiAssetMinAggregateOutputType | null
+    _max: MultiAssetMaxAggregateOutputType | null
+  }
+
+  type GetMultiAssetGroupByPayload<T extends MultiAssetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MultiAssetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MultiAssetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MultiAssetGroupByOutputType[P]>
+            : GetScalarType<T[P], MultiAssetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MultiAssetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    policyId?: boolean
+    assetName?: boolean
+    quantity?: boolean
+    utxoId?: boolean
+    Utxo?: boolean | MultiAsset$UtxoArgs<ExtArgs>
+  }, ExtArgs["result"]["multiAsset"]>
+
+  export type MultiAssetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    policyId?: boolean
+    assetName?: boolean
+    quantity?: boolean
+    utxoId?: boolean
+    Utxo?: boolean | MultiAsset$UtxoArgs<ExtArgs>
+  }, ExtArgs["result"]["multiAsset"]>
+
+  export type MultiAssetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    policyId?: boolean
+    assetName?: boolean
+    quantity?: boolean
+    utxoId?: boolean
+    Utxo?: boolean | MultiAsset$UtxoArgs<ExtArgs>
+  }, ExtArgs["result"]["multiAsset"]>
+
+  export type MultiAssetSelectScalar = {
+    id?: boolean
+    policyId?: boolean
+    assetName?: boolean
+    quantity?: boolean
+    utxoId?: boolean
+  }
+
+  export type MultiAssetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "policyId" | "assetName" | "quantity" | "utxoId", ExtArgs["result"]["multiAsset"]>
+  export type MultiAssetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Utxo?: boolean | MultiAsset$UtxoArgs<ExtArgs>
+  }
+  export type MultiAssetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Utxo?: boolean | MultiAsset$UtxoArgs<ExtArgs>
+  }
+  export type MultiAssetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Utxo?: boolean | MultiAsset$UtxoArgs<ExtArgs>
+  }
+
+  export type $MultiAssetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MultiAsset"
+    objects: {
+      Utxo: Prisma.$UtxoPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      policyId: string
+      assetName: string
+      quantity: bigint
+      utxoId: number | null
+    }, ExtArgs["result"]["multiAsset"]>
+    composites: {}
+  }
+
+  type MultiAssetGetPayload<S extends boolean | null | undefined | MultiAssetDefaultArgs> = $Result.GetResult<Prisma.$MultiAssetPayload, S>
+
+  type MultiAssetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MultiAssetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MultiAssetCountAggregateInputType | true
+    }
+
+  export interface MultiAssetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MultiAsset'], meta: { name: 'MultiAsset' } }
+    /**
+     * Find zero or one MultiAsset that matches the filter.
+     * @param {MultiAssetFindUniqueArgs} args - Arguments to find a MultiAsset
+     * @example
+     * // Get one MultiAsset
+     * const multiAsset = await prisma.multiAsset.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MultiAssetFindUniqueArgs>(args: SelectSubset<T, MultiAssetFindUniqueArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MultiAsset that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MultiAssetFindUniqueOrThrowArgs} args - Arguments to find a MultiAsset
+     * @example
+     * // Get one MultiAsset
+     * const multiAsset = await prisma.multiAsset.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MultiAssetFindUniqueOrThrowArgs>(args: SelectSubset<T, MultiAssetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MultiAsset that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetFindFirstArgs} args - Arguments to find a MultiAsset
+     * @example
+     * // Get one MultiAsset
+     * const multiAsset = await prisma.multiAsset.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MultiAssetFindFirstArgs>(args?: SelectSubset<T, MultiAssetFindFirstArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MultiAsset that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetFindFirstOrThrowArgs} args - Arguments to find a MultiAsset
+     * @example
+     * // Get one MultiAsset
+     * const multiAsset = await prisma.multiAsset.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MultiAssetFindFirstOrThrowArgs>(args?: SelectSubset<T, MultiAssetFindFirstOrThrowArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MultiAssets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MultiAssets
+     * const multiAssets = await prisma.multiAsset.findMany()
+     * 
+     * // Get first 10 MultiAssets
+     * const multiAssets = await prisma.multiAsset.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const multiAssetWithIdOnly = await prisma.multiAsset.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MultiAssetFindManyArgs>(args?: SelectSubset<T, MultiAssetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MultiAsset.
+     * @param {MultiAssetCreateArgs} args - Arguments to create a MultiAsset.
+     * @example
+     * // Create one MultiAsset
+     * const MultiAsset = await prisma.multiAsset.create({
+     *   data: {
+     *     // ... data to create a MultiAsset
+     *   }
+     * })
+     * 
+     */
+    create<T extends MultiAssetCreateArgs>(args: SelectSubset<T, MultiAssetCreateArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MultiAssets.
+     * @param {MultiAssetCreateManyArgs} args - Arguments to create many MultiAssets.
+     * @example
+     * // Create many MultiAssets
+     * const multiAsset = await prisma.multiAsset.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MultiAssetCreateManyArgs>(args?: SelectSubset<T, MultiAssetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MultiAssets and returns the data saved in the database.
+     * @param {MultiAssetCreateManyAndReturnArgs} args - Arguments to create many MultiAssets.
+     * @example
+     * // Create many MultiAssets
+     * const multiAsset = await prisma.multiAsset.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MultiAssets and only return the `id`
+     * const multiAssetWithIdOnly = await prisma.multiAsset.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MultiAssetCreateManyAndReturnArgs>(args?: SelectSubset<T, MultiAssetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MultiAsset.
+     * @param {MultiAssetDeleteArgs} args - Arguments to delete one MultiAsset.
+     * @example
+     * // Delete one MultiAsset
+     * const MultiAsset = await prisma.multiAsset.delete({
+     *   where: {
+     *     // ... filter to delete one MultiAsset
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MultiAssetDeleteArgs>(args: SelectSubset<T, MultiAssetDeleteArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MultiAsset.
+     * @param {MultiAssetUpdateArgs} args - Arguments to update one MultiAsset.
+     * @example
+     * // Update one MultiAsset
+     * const multiAsset = await prisma.multiAsset.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MultiAssetUpdateArgs>(args: SelectSubset<T, MultiAssetUpdateArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MultiAssets.
+     * @param {MultiAssetDeleteManyArgs} args - Arguments to filter MultiAssets to delete.
+     * @example
+     * // Delete a few MultiAssets
+     * const { count } = await prisma.multiAsset.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MultiAssetDeleteManyArgs>(args?: SelectSubset<T, MultiAssetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MultiAssets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MultiAssets
+     * const multiAsset = await prisma.multiAsset.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MultiAssetUpdateManyArgs>(args: SelectSubset<T, MultiAssetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MultiAssets and returns the data updated in the database.
+     * @param {MultiAssetUpdateManyAndReturnArgs} args - Arguments to update many MultiAssets.
+     * @example
+     * // Update many MultiAssets
+     * const multiAsset = await prisma.multiAsset.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MultiAssets and only return the `id`
+     * const multiAssetWithIdOnly = await prisma.multiAsset.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MultiAssetUpdateManyAndReturnArgs>(args: SelectSubset<T, MultiAssetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MultiAsset.
+     * @param {MultiAssetUpsertArgs} args - Arguments to update or create a MultiAsset.
+     * @example
+     * // Update or create a MultiAsset
+     * const multiAsset = await prisma.multiAsset.upsert({
+     *   create: {
+     *     // ... data to create a MultiAsset
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MultiAsset we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MultiAssetUpsertArgs>(args: SelectSubset<T, MultiAssetUpsertArgs<ExtArgs>>): Prisma__MultiAssetClient<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MultiAssets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetCountArgs} args - Arguments to filter MultiAssets to count.
+     * @example
+     * // Count the number of MultiAssets
+     * const count = await prisma.multiAsset.count({
+     *   where: {
+     *     // ... the filter for the MultiAssets we want to count
+     *   }
+     * })
+    **/
+    count<T extends MultiAssetCountArgs>(
+      args?: Subset<T, MultiAssetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MultiAssetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MultiAsset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MultiAssetAggregateArgs>(args: Subset<T, MultiAssetAggregateArgs>): Prisma.PrismaPromise<GetMultiAssetAggregateType<T>>
+
+    /**
+     * Group by MultiAsset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MultiAssetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MultiAssetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MultiAssetGroupByArgs['orderBy'] }
+        : { orderBy?: MultiAssetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MultiAssetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMultiAssetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MultiAsset model
+   */
+  readonly fields: MultiAssetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MultiAsset.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MultiAssetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Utxo<T extends MultiAsset$UtxoArgs<ExtArgs> = {}>(args?: Subset<T, MultiAsset$UtxoArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MultiAsset model
+   */
+  interface MultiAssetFieldRefs {
+    readonly id: FieldRef<"MultiAsset", 'Int'>
+    readonly policyId: FieldRef<"MultiAsset", 'String'>
+    readonly assetName: FieldRef<"MultiAsset", 'String'>
+    readonly quantity: FieldRef<"MultiAsset", 'BigInt'>
+    readonly utxoId: FieldRef<"MultiAsset", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MultiAsset findUnique
+   */
+  export type MultiAssetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which MultiAsset to fetch.
+     */
+    where: MultiAssetWhereUniqueInput
+  }
+
+  /**
+   * MultiAsset findUniqueOrThrow
+   */
+  export type MultiAssetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which MultiAsset to fetch.
+     */
+    where: MultiAssetWhereUniqueInput
+  }
+
+  /**
+   * MultiAsset findFirst
+   */
+  export type MultiAssetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which MultiAsset to fetch.
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MultiAssets to fetch.
+     */
+    orderBy?: MultiAssetOrderByWithRelationInput | MultiAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MultiAssets.
+     */
+    cursor?: MultiAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MultiAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MultiAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MultiAssets.
+     */
+    distinct?: MultiAssetScalarFieldEnum | MultiAssetScalarFieldEnum[]
+  }
+
+  /**
+   * MultiAsset findFirstOrThrow
+   */
+  export type MultiAssetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which MultiAsset to fetch.
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MultiAssets to fetch.
+     */
+    orderBy?: MultiAssetOrderByWithRelationInput | MultiAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MultiAssets.
+     */
+    cursor?: MultiAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MultiAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MultiAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MultiAssets.
+     */
+    distinct?: MultiAssetScalarFieldEnum | MultiAssetScalarFieldEnum[]
+  }
+
+  /**
+   * MultiAsset findMany
+   */
+  export type MultiAssetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * Filter, which MultiAssets to fetch.
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MultiAssets to fetch.
+     */
+    orderBy?: MultiAssetOrderByWithRelationInput | MultiAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MultiAssets.
+     */
+    cursor?: MultiAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MultiAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MultiAssets.
+     */
+    skip?: number
+    distinct?: MultiAssetScalarFieldEnum | MultiAssetScalarFieldEnum[]
+  }
+
+  /**
+   * MultiAsset create
+   */
+  export type MultiAssetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MultiAsset.
+     */
+    data: XOR<MultiAssetCreateInput, MultiAssetUncheckedCreateInput>
+  }
+
+  /**
+   * MultiAsset createMany
+   */
+  export type MultiAssetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MultiAssets.
+     */
+    data: MultiAssetCreateManyInput | MultiAssetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MultiAsset createManyAndReturn
+   */
+  export type MultiAssetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * The data used to create many MultiAssets.
+     */
+    data: MultiAssetCreateManyInput | MultiAssetCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MultiAsset update
+   */
+  export type MultiAssetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MultiAsset.
+     */
+    data: XOR<MultiAssetUpdateInput, MultiAssetUncheckedUpdateInput>
+    /**
+     * Choose, which MultiAsset to update.
+     */
+    where: MultiAssetWhereUniqueInput
+  }
+
+  /**
+   * MultiAsset updateMany
+   */
+  export type MultiAssetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MultiAssets.
+     */
+    data: XOR<MultiAssetUpdateManyMutationInput, MultiAssetUncheckedUpdateManyInput>
+    /**
+     * Filter which MultiAssets to update
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * Limit how many MultiAssets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MultiAsset updateManyAndReturn
+   */
+  export type MultiAssetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * The data used to update MultiAssets.
+     */
+    data: XOR<MultiAssetUpdateManyMutationInput, MultiAssetUncheckedUpdateManyInput>
+    /**
+     * Filter which MultiAssets to update
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * Limit how many MultiAssets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MultiAsset upsert
+   */
+  export type MultiAssetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MultiAsset to update in case it exists.
+     */
+    where: MultiAssetWhereUniqueInput
+    /**
+     * In case the MultiAsset found by the `where` argument doesn't exist, create a new MultiAsset with this data.
+     */
+    create: XOR<MultiAssetCreateInput, MultiAssetUncheckedCreateInput>
+    /**
+     * In case the MultiAsset was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MultiAssetUpdateInput, MultiAssetUncheckedUpdateInput>
+  }
+
+  /**
+   * MultiAsset delete
+   */
+  export type MultiAssetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    /**
+     * Filter which MultiAsset to delete.
+     */
+    where: MultiAssetWhereUniqueInput
+  }
+
+  /**
+   * MultiAsset deleteMany
+   */
+  export type MultiAssetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MultiAssets to delete
+     */
+    where?: MultiAssetWhereInput
+    /**
+     * Limit how many MultiAssets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MultiAsset.Utxo
+   */
+  export type MultiAsset$UtxoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    where?: UtxoWhereInput
+  }
+
+  /**
+   * MultiAsset without action
+   */
+  export type MultiAssetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Utxo
+   */
+
+  export type AggregateUtxo = {
+    _count: UtxoCountAggregateOutputType | null
+    _avg: UtxoAvgAggregateOutputType | null
+    _sum: UtxoSumAggregateOutputType | null
+    _min: UtxoMinAggregateOutputType | null
+    _max: UtxoMaxAggregateOutputType | null
+  }
+
+  export type UtxoAvgAggregateOutputType = {
+    id: number | null
+    index: number | null
+    coin: number | null
+  }
+
+  export type UtxoSumAggregateOutputType = {
+    id: number | null
+    index: number | null
+    coin: bigint | null
+  }
+
+  export type UtxoMinAggregateOutputType = {
+    id: number | null
+    txHash: string | null
+    index: number | null
+    address: string | null
+    plutusData: string | null
+    scriptRef: string | null
+    coin: bigint | null
+  }
+
+  export type UtxoMaxAggregateOutputType = {
+    id: number | null
+    txHash: string | null
+    index: number | null
+    address: string | null
+    plutusData: string | null
+    scriptRef: string | null
+    coin: bigint | null
+  }
+
+  export type UtxoCountAggregateOutputType = {
+    id: number
+    txHash: number
+    index: number
+    address: number
+    plutusData: number
+    scriptRef: number
+    coin: number
+    _all: number
+  }
+
+
+  export type UtxoAvgAggregateInputType = {
+    id?: true
+    index?: true
+    coin?: true
+  }
+
+  export type UtxoSumAggregateInputType = {
+    id?: true
+    index?: true
+    coin?: true
+  }
+
+  export type UtxoMinAggregateInputType = {
+    id?: true
+    txHash?: true
+    index?: true
+    address?: true
+    plutusData?: true
+    scriptRef?: true
+    coin?: true
+  }
+
+  export type UtxoMaxAggregateInputType = {
+    id?: true
+    txHash?: true
+    index?: true
+    address?: true
+    plutusData?: true
+    scriptRef?: true
+    coin?: true
+  }
+
+  export type UtxoCountAggregateInputType = {
+    id?: true
+    txHash?: true
+    index?: true
+    address?: true
+    plutusData?: true
+    scriptRef?: true
+    coin?: true
+    _all?: true
+  }
+
+  export type UtxoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Utxo to aggregate.
+     */
+    where?: UtxoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Utxos to fetch.
+     */
+    orderBy?: UtxoOrderByWithRelationInput | UtxoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UtxoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Utxos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Utxos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Utxos
+    **/
+    _count?: true | UtxoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UtxoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UtxoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UtxoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UtxoMaxAggregateInputType
+  }
+
+  export type GetUtxoAggregateType<T extends UtxoAggregateArgs> = {
+        [P in keyof T & keyof AggregateUtxo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUtxo[P]>
+      : GetScalarType<T[P], AggregateUtxo[P]>
+  }
+
+
+
+
+  export type UtxoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UtxoWhereInput
+    orderBy?: UtxoOrderByWithAggregationInput | UtxoOrderByWithAggregationInput[]
+    by: UtxoScalarFieldEnum[] | UtxoScalarFieldEnum
+    having?: UtxoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UtxoCountAggregateInputType | true
+    _avg?: UtxoAvgAggregateInputType
+    _sum?: UtxoSumAggregateInputType
+    _min?: UtxoMinAggregateInputType
+    _max?: UtxoMaxAggregateInputType
+  }
+
+  export type UtxoGroupByOutputType = {
+    id: number
+    txHash: string
+    index: number
+    address: string
+    plutusData: string | null
+    scriptRef: string | null
+    coin: bigint
+    _count: UtxoCountAggregateOutputType | null
+    _avg: UtxoAvgAggregateOutputType | null
+    _sum: UtxoSumAggregateOutputType | null
+    _min: UtxoMinAggregateOutputType | null
+    _max: UtxoMaxAggregateOutputType | null
+  }
+
+  type GetUtxoGroupByPayload<T extends UtxoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UtxoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UtxoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UtxoGroupByOutputType[P]>
+            : GetScalarType<T[P], UtxoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UtxoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    txHash?: boolean
+    index?: boolean
+    address?: boolean
+    plutusData?: boolean
+    scriptRef?: boolean
+    coin?: boolean
+    MultiAsset?: boolean | Utxo$MultiAssetArgs<ExtArgs>
+    _count?: boolean | UtxoCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["utxo"]>
+
+  export type UtxoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    txHash?: boolean
+    index?: boolean
+    address?: boolean
+    plutusData?: boolean
+    scriptRef?: boolean
+    coin?: boolean
+  }, ExtArgs["result"]["utxo"]>
+
+  export type UtxoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    txHash?: boolean
+    index?: boolean
+    address?: boolean
+    plutusData?: boolean
+    scriptRef?: boolean
+    coin?: boolean
+  }, ExtArgs["result"]["utxo"]>
+
+  export type UtxoSelectScalar = {
+    id?: boolean
+    txHash?: boolean
+    index?: boolean
+    address?: boolean
+    plutusData?: boolean
+    scriptRef?: boolean
+    coin?: boolean
+  }
+
+  export type UtxoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "txHash" | "index" | "address" | "plutusData" | "scriptRef" | "coin", ExtArgs["result"]["utxo"]>
+  export type UtxoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    MultiAsset?: boolean | Utxo$MultiAssetArgs<ExtArgs>
+    _count?: boolean | UtxoCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UtxoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UtxoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $UtxoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Utxo"
+    objects: {
+      MultiAsset: Prisma.$MultiAssetPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      txHash: string
+      index: number
+      address: string
+      plutusData: string | null
+      scriptRef: string | null
+      coin: bigint
+    }, ExtArgs["result"]["utxo"]>
+    composites: {}
+  }
+
+  type UtxoGetPayload<S extends boolean | null | undefined | UtxoDefaultArgs> = $Result.GetResult<Prisma.$UtxoPayload, S>
+
+  type UtxoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UtxoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UtxoCountAggregateInputType | true
+    }
+
+  export interface UtxoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Utxo'], meta: { name: 'Utxo' } }
+    /**
+     * Find zero or one Utxo that matches the filter.
+     * @param {UtxoFindUniqueArgs} args - Arguments to find a Utxo
+     * @example
+     * // Get one Utxo
+     * const utxo = await prisma.utxo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UtxoFindUniqueArgs>(args: SelectSubset<T, UtxoFindUniqueArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Utxo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UtxoFindUniqueOrThrowArgs} args - Arguments to find a Utxo
+     * @example
+     * // Get one Utxo
+     * const utxo = await prisma.utxo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UtxoFindUniqueOrThrowArgs>(args: SelectSubset<T, UtxoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Utxo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoFindFirstArgs} args - Arguments to find a Utxo
+     * @example
+     * // Get one Utxo
+     * const utxo = await prisma.utxo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UtxoFindFirstArgs>(args?: SelectSubset<T, UtxoFindFirstArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Utxo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoFindFirstOrThrowArgs} args - Arguments to find a Utxo
+     * @example
+     * // Get one Utxo
+     * const utxo = await prisma.utxo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UtxoFindFirstOrThrowArgs>(args?: SelectSubset<T, UtxoFindFirstOrThrowArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Utxos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Utxos
+     * const utxos = await prisma.utxo.findMany()
+     * 
+     * // Get first 10 Utxos
+     * const utxos = await prisma.utxo.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const utxoWithIdOnly = await prisma.utxo.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UtxoFindManyArgs>(args?: SelectSubset<T, UtxoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Utxo.
+     * @param {UtxoCreateArgs} args - Arguments to create a Utxo.
+     * @example
+     * // Create one Utxo
+     * const Utxo = await prisma.utxo.create({
+     *   data: {
+     *     // ... data to create a Utxo
+     *   }
+     * })
+     * 
+     */
+    create<T extends UtxoCreateArgs>(args: SelectSubset<T, UtxoCreateArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Utxos.
+     * @param {UtxoCreateManyArgs} args - Arguments to create many Utxos.
+     * @example
+     * // Create many Utxos
+     * const utxo = await prisma.utxo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UtxoCreateManyArgs>(args?: SelectSubset<T, UtxoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Utxos and returns the data saved in the database.
+     * @param {UtxoCreateManyAndReturnArgs} args - Arguments to create many Utxos.
+     * @example
+     * // Create many Utxos
+     * const utxo = await prisma.utxo.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Utxos and only return the `id`
+     * const utxoWithIdOnly = await prisma.utxo.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UtxoCreateManyAndReturnArgs>(args?: SelectSubset<T, UtxoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Utxo.
+     * @param {UtxoDeleteArgs} args - Arguments to delete one Utxo.
+     * @example
+     * // Delete one Utxo
+     * const Utxo = await prisma.utxo.delete({
+     *   where: {
+     *     // ... filter to delete one Utxo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UtxoDeleteArgs>(args: SelectSubset<T, UtxoDeleteArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Utxo.
+     * @param {UtxoUpdateArgs} args - Arguments to update one Utxo.
+     * @example
+     * // Update one Utxo
+     * const utxo = await prisma.utxo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UtxoUpdateArgs>(args: SelectSubset<T, UtxoUpdateArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Utxos.
+     * @param {UtxoDeleteManyArgs} args - Arguments to filter Utxos to delete.
+     * @example
+     * // Delete a few Utxos
+     * const { count } = await prisma.utxo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UtxoDeleteManyArgs>(args?: SelectSubset<T, UtxoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Utxos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Utxos
+     * const utxo = await prisma.utxo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UtxoUpdateManyArgs>(args: SelectSubset<T, UtxoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Utxos and returns the data updated in the database.
+     * @param {UtxoUpdateManyAndReturnArgs} args - Arguments to update many Utxos.
+     * @example
+     * // Update many Utxos
+     * const utxo = await prisma.utxo.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Utxos and only return the `id`
+     * const utxoWithIdOnly = await prisma.utxo.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UtxoUpdateManyAndReturnArgs>(args: SelectSubset<T, UtxoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Utxo.
+     * @param {UtxoUpsertArgs} args - Arguments to update or create a Utxo.
+     * @example
+     * // Update or create a Utxo
+     * const utxo = await prisma.utxo.upsert({
+     *   create: {
+     *     // ... data to create a Utxo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Utxo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UtxoUpsertArgs>(args: SelectSubset<T, UtxoUpsertArgs<ExtArgs>>): Prisma__UtxoClient<$Result.GetResult<Prisma.$UtxoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Utxos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoCountArgs} args - Arguments to filter Utxos to count.
+     * @example
+     * // Count the number of Utxos
+     * const count = await prisma.utxo.count({
+     *   where: {
+     *     // ... the filter for the Utxos we want to count
+     *   }
+     * })
+    **/
+    count<T extends UtxoCountArgs>(
+      args?: Subset<T, UtxoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UtxoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Utxo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UtxoAggregateArgs>(args: Subset<T, UtxoAggregateArgs>): Prisma.PrismaPromise<GetUtxoAggregateType<T>>
+
+    /**
+     * Group by Utxo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UtxoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UtxoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UtxoGroupByArgs['orderBy'] }
+        : { orderBy?: UtxoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UtxoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUtxoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Utxo model
+   */
+  readonly fields: UtxoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Utxo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UtxoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    MultiAsset<T extends Utxo$MultiAssetArgs<ExtArgs> = {}>(args?: Subset<T, Utxo$MultiAssetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MultiAssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Utxo model
+   */
+  interface UtxoFieldRefs {
+    readonly id: FieldRef<"Utxo", 'Int'>
+    readonly txHash: FieldRef<"Utxo", 'String'>
+    readonly index: FieldRef<"Utxo", 'Int'>
+    readonly address: FieldRef<"Utxo", 'String'>
+    readonly plutusData: FieldRef<"Utxo", 'String'>
+    readonly scriptRef: FieldRef<"Utxo", 'String'>
+    readonly coin: FieldRef<"Utxo", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Utxo findUnique
+   */
+  export type UtxoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * Filter, which Utxo to fetch.
+     */
+    where: UtxoWhereUniqueInput
+  }
+
+  /**
+   * Utxo findUniqueOrThrow
+   */
+  export type UtxoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * Filter, which Utxo to fetch.
+     */
+    where: UtxoWhereUniqueInput
+  }
+
+  /**
+   * Utxo findFirst
+   */
+  export type UtxoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * Filter, which Utxo to fetch.
+     */
+    where?: UtxoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Utxos to fetch.
+     */
+    orderBy?: UtxoOrderByWithRelationInput | UtxoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Utxos.
+     */
+    cursor?: UtxoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Utxos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Utxos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Utxos.
+     */
+    distinct?: UtxoScalarFieldEnum | UtxoScalarFieldEnum[]
+  }
+
+  /**
+   * Utxo findFirstOrThrow
+   */
+  export type UtxoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * Filter, which Utxo to fetch.
+     */
+    where?: UtxoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Utxos to fetch.
+     */
+    orderBy?: UtxoOrderByWithRelationInput | UtxoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Utxos.
+     */
+    cursor?: UtxoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Utxos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Utxos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Utxos.
+     */
+    distinct?: UtxoScalarFieldEnum | UtxoScalarFieldEnum[]
+  }
+
+  /**
+   * Utxo findMany
+   */
+  export type UtxoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * Filter, which Utxos to fetch.
+     */
+    where?: UtxoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Utxos to fetch.
+     */
+    orderBy?: UtxoOrderByWithRelationInput | UtxoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Utxos.
+     */
+    cursor?: UtxoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Utxos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Utxos.
+     */
+    skip?: number
+    distinct?: UtxoScalarFieldEnum | UtxoScalarFieldEnum[]
+  }
+
+  /**
+   * Utxo create
+   */
+  export type UtxoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Utxo.
+     */
+    data: XOR<UtxoCreateInput, UtxoUncheckedCreateInput>
+  }
+
+  /**
+   * Utxo createMany
+   */
+  export type UtxoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Utxos.
+     */
+    data: UtxoCreateManyInput | UtxoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Utxo createManyAndReturn
+   */
+  export type UtxoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Utxos.
+     */
+    data: UtxoCreateManyInput | UtxoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Utxo update
+   */
+  export type UtxoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Utxo.
+     */
+    data: XOR<UtxoUpdateInput, UtxoUncheckedUpdateInput>
+    /**
+     * Choose, which Utxo to update.
+     */
+    where: UtxoWhereUniqueInput
+  }
+
+  /**
+   * Utxo updateMany
+   */
+  export type UtxoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Utxos.
+     */
+    data: XOR<UtxoUpdateManyMutationInput, UtxoUncheckedUpdateManyInput>
+    /**
+     * Filter which Utxos to update
+     */
+    where?: UtxoWhereInput
+    /**
+     * Limit how many Utxos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Utxo updateManyAndReturn
+   */
+  export type UtxoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * The data used to update Utxos.
+     */
+    data: XOR<UtxoUpdateManyMutationInput, UtxoUncheckedUpdateManyInput>
+    /**
+     * Filter which Utxos to update
+     */
+    where?: UtxoWhereInput
+    /**
+     * Limit how many Utxos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Utxo upsert
+   */
+  export type UtxoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Utxo to update in case it exists.
+     */
+    where: UtxoWhereUniqueInput
+    /**
+     * In case the Utxo found by the `where` argument doesn't exist, create a new Utxo with this data.
+     */
+    create: XOR<UtxoCreateInput, UtxoUncheckedCreateInput>
+    /**
+     * In case the Utxo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UtxoUpdateInput, UtxoUncheckedUpdateInput>
+  }
+
+  /**
+   * Utxo delete
+   */
+  export type UtxoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+    /**
+     * Filter which Utxo to delete.
+     */
+    where: UtxoWhereUniqueInput
+  }
+
+  /**
+   * Utxo deleteMany
+   */
+  export type UtxoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Utxos to delete
+     */
+    where?: UtxoWhereInput
+    /**
+     * Limit how many Utxos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Utxo.MultiAsset
+   */
+  export type Utxo$MultiAssetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MultiAsset
+     */
+    select?: MultiAssetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MultiAsset
+     */
+    omit?: MultiAssetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MultiAssetInclude<ExtArgs> | null
+    where?: MultiAssetWhereInput
+    orderBy?: MultiAssetOrderByWithRelationInput | MultiAssetOrderByWithRelationInput[]
+    cursor?: MultiAssetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MultiAssetScalarFieldEnum | MultiAssetScalarFieldEnum[]
+  }
+
+  /**
+   * Utxo without action
+   */
+  export type UtxoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Utxo
+     */
+    select?: UtxoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Utxo
+     */
+    omit?: UtxoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UtxoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5521,6 +7991,30 @@ export namespace Prisma {
   };
 
   export type AddressToWatchSyncTipScalarFieldEnum = (typeof AddressToWatchSyncTipScalarFieldEnum)[keyof typeof AddressToWatchSyncTipScalarFieldEnum]
+
+
+  export const MultiAssetScalarFieldEnum: {
+    id: 'id',
+    policyId: 'policyId',
+    assetName: 'assetName',
+    quantity: 'quantity',
+    utxoId: 'utxoId'
+  };
+
+  export type MultiAssetScalarFieldEnum = (typeof MultiAssetScalarFieldEnum)[keyof typeof MultiAssetScalarFieldEnum]
+
+
+  export const UtxoScalarFieldEnum: {
+    id: 'id',
+    txHash: 'txHash',
+    index: 'index',
+    address: 'address',
+    plutusData: 'plutusData',
+    scriptRef: 'scriptRef',
+    coin: 'coin'
+  };
+
+  export type UtxoScalarFieldEnum = (typeof UtxoScalarFieldEnum)[keyof typeof UtxoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5591,6 +8085,20 @@ export namespace Prisma {
    * Reference to a field of type 'LocalStateType[]'
    */
   export type ListEnumLocalStateTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LocalStateType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt[]'
+   */
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
     
 
 
@@ -5818,6 +8326,131 @@ export namespace Prisma {
     blockHash?: StringWithAggregatesFilter<"AddressToWatchSyncTip"> | string
   }
 
+  export type MultiAssetWhereInput = {
+    AND?: MultiAssetWhereInput | MultiAssetWhereInput[]
+    OR?: MultiAssetWhereInput[]
+    NOT?: MultiAssetWhereInput | MultiAssetWhereInput[]
+    id?: IntFilter<"MultiAsset"> | number
+    policyId?: StringFilter<"MultiAsset"> | string
+    assetName?: StringFilter<"MultiAsset"> | string
+    quantity?: BigIntFilter<"MultiAsset"> | bigint | number
+    utxoId?: IntNullableFilter<"MultiAsset"> | number | null
+    Utxo?: XOR<UtxoNullableScalarRelationFilter, UtxoWhereInput> | null
+  }
+
+  export type MultiAssetOrderByWithRelationInput = {
+    id?: SortOrder
+    policyId?: SortOrder
+    assetName?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrderInput | SortOrder
+    Utxo?: UtxoOrderByWithRelationInput
+  }
+
+  export type MultiAssetWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: MultiAssetWhereInput | MultiAssetWhereInput[]
+    OR?: MultiAssetWhereInput[]
+    NOT?: MultiAssetWhereInput | MultiAssetWhereInput[]
+    policyId?: StringFilter<"MultiAsset"> | string
+    assetName?: StringFilter<"MultiAsset"> | string
+    quantity?: BigIntFilter<"MultiAsset"> | bigint | number
+    utxoId?: IntNullableFilter<"MultiAsset"> | number | null
+    Utxo?: XOR<UtxoNullableScalarRelationFilter, UtxoWhereInput> | null
+  }, "id">
+
+  export type MultiAssetOrderByWithAggregationInput = {
+    id?: SortOrder
+    policyId?: SortOrder
+    assetName?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrderInput | SortOrder
+    _count?: MultiAssetCountOrderByAggregateInput
+    _avg?: MultiAssetAvgOrderByAggregateInput
+    _max?: MultiAssetMaxOrderByAggregateInput
+    _min?: MultiAssetMinOrderByAggregateInput
+    _sum?: MultiAssetSumOrderByAggregateInput
+  }
+
+  export type MultiAssetScalarWhereWithAggregatesInput = {
+    AND?: MultiAssetScalarWhereWithAggregatesInput | MultiAssetScalarWhereWithAggregatesInput[]
+    OR?: MultiAssetScalarWhereWithAggregatesInput[]
+    NOT?: MultiAssetScalarWhereWithAggregatesInput | MultiAssetScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"MultiAsset"> | number
+    policyId?: StringWithAggregatesFilter<"MultiAsset"> | string
+    assetName?: StringWithAggregatesFilter<"MultiAsset"> | string
+    quantity?: BigIntWithAggregatesFilter<"MultiAsset"> | bigint | number
+    utxoId?: IntNullableWithAggregatesFilter<"MultiAsset"> | number | null
+  }
+
+  export type UtxoWhereInput = {
+    AND?: UtxoWhereInput | UtxoWhereInput[]
+    OR?: UtxoWhereInput[]
+    NOT?: UtxoWhereInput | UtxoWhereInput[]
+    id?: IntFilter<"Utxo"> | number
+    txHash?: StringFilter<"Utxo"> | string
+    index?: IntFilter<"Utxo"> | number
+    address?: StringFilter<"Utxo"> | string
+    plutusData?: StringNullableFilter<"Utxo"> | string | null
+    scriptRef?: StringNullableFilter<"Utxo"> | string | null
+    coin?: BigIntFilter<"Utxo"> | bigint | number
+    MultiAsset?: MultiAssetListRelationFilter
+  }
+
+  export type UtxoOrderByWithRelationInput = {
+    id?: SortOrder
+    txHash?: SortOrder
+    index?: SortOrder
+    address?: SortOrder
+    plutusData?: SortOrderInput | SortOrder
+    scriptRef?: SortOrderInput | SortOrder
+    coin?: SortOrder
+    MultiAsset?: MultiAssetOrderByRelationAggregateInput
+  }
+
+  export type UtxoWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    txHash_index?: UtxoTxHashIndexCompoundUniqueInput
+    AND?: UtxoWhereInput | UtxoWhereInput[]
+    OR?: UtxoWhereInput[]
+    NOT?: UtxoWhereInput | UtxoWhereInput[]
+    txHash?: StringFilter<"Utxo"> | string
+    index?: IntFilter<"Utxo"> | number
+    address?: StringFilter<"Utxo"> | string
+    plutusData?: StringNullableFilter<"Utxo"> | string | null
+    scriptRef?: StringNullableFilter<"Utxo"> | string | null
+    coin?: BigIntFilter<"Utxo"> | bigint | number
+    MultiAsset?: MultiAssetListRelationFilter
+  }, "id" | "txHash_index">
+
+  export type UtxoOrderByWithAggregationInput = {
+    id?: SortOrder
+    txHash?: SortOrder
+    index?: SortOrder
+    address?: SortOrder
+    plutusData?: SortOrderInput | SortOrder
+    scriptRef?: SortOrderInput | SortOrder
+    coin?: SortOrder
+    _count?: UtxoCountOrderByAggregateInput
+    _avg?: UtxoAvgOrderByAggregateInput
+    _max?: UtxoMaxOrderByAggregateInput
+    _min?: UtxoMinOrderByAggregateInput
+    _sum?: UtxoSumOrderByAggregateInput
+  }
+
+  export type UtxoScalarWhereWithAggregatesInput = {
+    AND?: UtxoScalarWhereWithAggregatesInput | UtxoScalarWhereWithAggregatesInput[]
+    OR?: UtxoScalarWhereWithAggregatesInput[]
+    NOT?: UtxoScalarWhereWithAggregatesInput | UtxoScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Utxo"> | number
+    txHash?: StringWithAggregatesFilter<"Utxo"> | string
+    index?: IntWithAggregatesFilter<"Utxo"> | number
+    address?: StringWithAggregatesFilter<"Utxo"> | string
+    plutusData?: StringNullableWithAggregatesFilter<"Utxo"> | string | null
+    scriptRef?: StringNullableWithAggregatesFilter<"Utxo"> | string | null
+    coin?: BigIntWithAggregatesFilter<"Utxo"> | bigint | number
+  }
+
   export type TransactionCreateInput = {
     txHash: string
     cbor: string
@@ -6015,6 +8648,129 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     slot?: IntFieldUpdateOperationsInput | number
     blockHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type MultiAssetCreateInput = {
+    policyId: string
+    assetName: string
+    quantity: bigint | number
+    Utxo?: UtxoCreateNestedOneWithoutMultiAssetInput
+  }
+
+  export type MultiAssetUncheckedCreateInput = {
+    id?: number
+    policyId: string
+    assetName: string
+    quantity: bigint | number
+    utxoId?: number | null
+  }
+
+  export type MultiAssetUpdateInput = {
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
+    Utxo?: UtxoUpdateOneWithoutMultiAssetNestedInput
+  }
+
+  export type MultiAssetUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
+    utxoId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type MultiAssetCreateManyInput = {
+    id?: number
+    policyId: string
+    assetName: string
+    quantity: bigint | number
+    utxoId?: number | null
+  }
+
+  export type MultiAssetUpdateManyMutationInput = {
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MultiAssetUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
+    utxoId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type UtxoCreateInput = {
+    txHash: string
+    index: number
+    address: string
+    plutusData?: string | null
+    scriptRef?: string | null
+    coin: bigint | number
+    MultiAsset?: MultiAssetCreateNestedManyWithoutUtxoInput
+  }
+
+  export type UtxoUncheckedCreateInput = {
+    id?: number
+    txHash: string
+    index: number
+    address: string
+    plutusData?: string | null
+    scriptRef?: string | null
+    coin: bigint | number
+    MultiAsset?: MultiAssetUncheckedCreateNestedManyWithoutUtxoInput
+  }
+
+  export type UtxoUpdateInput = {
+    txHash?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    plutusData?: NullableStringFieldUpdateOperationsInput | string | null
+    scriptRef?: NullableStringFieldUpdateOperationsInput | string | null
+    coin?: BigIntFieldUpdateOperationsInput | bigint | number
+    MultiAsset?: MultiAssetUpdateManyWithoutUtxoNestedInput
+  }
+
+  export type UtxoUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    txHash?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    plutusData?: NullableStringFieldUpdateOperationsInput | string | null
+    scriptRef?: NullableStringFieldUpdateOperationsInput | string | null
+    coin?: BigIntFieldUpdateOperationsInput | bigint | number
+    MultiAsset?: MultiAssetUncheckedUpdateManyWithoutUtxoNestedInput
+  }
+
+  export type UtxoCreateManyInput = {
+    id?: number
+    txHash: string
+    index: number
+    address: string
+    plutusData?: string | null
+    scriptRef?: string | null
+    coin: bigint | number
+  }
+
+  export type UtxoUpdateManyMutationInput = {
+    txHash?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    plutusData?: NullableStringFieldUpdateOperationsInput | string | null
+    scriptRef?: NullableStringFieldUpdateOperationsInput | string | null
+    coin?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type UtxoUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    txHash?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    plutusData?: NullableStringFieldUpdateOperationsInput | string | null
+    scriptRef?: NullableStringFieldUpdateOperationsInput | string | null
+    coin?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6306,6 +9062,131 @@ export namespace Prisma {
     slot?: SortOrder
   }
 
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type UtxoNullableScalarRelationFilter = {
+    is?: UtxoWhereInput | null
+    isNot?: UtxoWhereInput | null
+  }
+
+  export type MultiAssetCountOrderByAggregateInput = {
+    id?: SortOrder
+    policyId?: SortOrder
+    assetName?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrder
+  }
+
+  export type MultiAssetAvgOrderByAggregateInput = {
+    id?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrder
+  }
+
+  export type MultiAssetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    policyId?: SortOrder
+    assetName?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrder
+  }
+
+  export type MultiAssetMinOrderByAggregateInput = {
+    id?: SortOrder
+    policyId?: SortOrder
+    assetName?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrder
+  }
+
+  export type MultiAssetSumOrderByAggregateInput = {
+    id?: SortOrder
+    quantity?: SortOrder
+    utxoId?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
+  export type MultiAssetListRelationFilter = {
+    every?: MultiAssetWhereInput
+    some?: MultiAssetWhereInput
+    none?: MultiAssetWhereInput
+  }
+
+  export type MultiAssetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UtxoTxHashIndexCompoundUniqueInput = {
+    txHash: string
+    index: number
+  }
+
+  export type UtxoCountOrderByAggregateInput = {
+    id?: SortOrder
+    txHash?: SortOrder
+    index?: SortOrder
+    address?: SortOrder
+    plutusData?: SortOrder
+    scriptRef?: SortOrder
+    coin?: SortOrder
+  }
+
+  export type UtxoAvgOrderByAggregateInput = {
+    id?: SortOrder
+    index?: SortOrder
+    coin?: SortOrder
+  }
+
+  export type UtxoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    txHash?: SortOrder
+    index?: SortOrder
+    address?: SortOrder
+    plutusData?: SortOrder
+    scriptRef?: SortOrder
+    coin?: SortOrder
+  }
+
+  export type UtxoMinOrderByAggregateInput = {
+    id?: SortOrder
+    txHash?: SortOrder
+    index?: SortOrder
+    address?: SortOrder
+    plutusData?: SortOrder
+    scriptRef?: SortOrder
+    coin?: SortOrder
+  }
+
+  export type UtxoSumOrderByAggregateInput = {
+    id?: SortOrder
+    index?: SortOrder
+    coin?: SortOrder
+  }
+
   export type AddressToWatchCreateNestedManyWithoutTransactionsInput = {
     create?: XOR<AddressToWatchCreateWithoutTransactionsInput, AddressToWatchUncheckedCreateWithoutTransactionsInput> | AddressToWatchCreateWithoutTransactionsInput[] | AddressToWatchUncheckedCreateWithoutTransactionsInput[]
     connectOrCreate?: AddressToWatchCreateOrConnectWithoutTransactionsInput | AddressToWatchCreateOrConnectWithoutTransactionsInput[]
@@ -6408,6 +9289,72 @@ export namespace Prisma {
     update?: TransactionUpdateWithWhereUniqueWithoutAddressesInput | TransactionUpdateWithWhereUniqueWithoutAddressesInput[]
     updateMany?: TransactionUpdateManyWithWhereWithoutAddressesInput | TransactionUpdateManyWithWhereWithoutAddressesInput[]
     deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
+  }
+
+  export type UtxoCreateNestedOneWithoutMultiAssetInput = {
+    create?: XOR<UtxoCreateWithoutMultiAssetInput, UtxoUncheckedCreateWithoutMultiAssetInput>
+    connectOrCreate?: UtxoCreateOrConnectWithoutMultiAssetInput
+    connect?: UtxoWhereUniqueInput
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type UtxoUpdateOneWithoutMultiAssetNestedInput = {
+    create?: XOR<UtxoCreateWithoutMultiAssetInput, UtxoUncheckedCreateWithoutMultiAssetInput>
+    connectOrCreate?: UtxoCreateOrConnectWithoutMultiAssetInput
+    upsert?: UtxoUpsertWithoutMultiAssetInput
+    disconnect?: UtxoWhereInput | boolean
+    delete?: UtxoWhereInput | boolean
+    connect?: UtxoWhereUniqueInput
+    update?: XOR<XOR<UtxoUpdateToOneWithWhereWithoutMultiAssetInput, UtxoUpdateWithoutMultiAssetInput>, UtxoUncheckedUpdateWithoutMultiAssetInput>
+  }
+
+  export type MultiAssetCreateNestedManyWithoutUtxoInput = {
+    create?: XOR<MultiAssetCreateWithoutUtxoInput, MultiAssetUncheckedCreateWithoutUtxoInput> | MultiAssetCreateWithoutUtxoInput[] | MultiAssetUncheckedCreateWithoutUtxoInput[]
+    connectOrCreate?: MultiAssetCreateOrConnectWithoutUtxoInput | MultiAssetCreateOrConnectWithoutUtxoInput[]
+    createMany?: MultiAssetCreateManyUtxoInputEnvelope
+    connect?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+  }
+
+  export type MultiAssetUncheckedCreateNestedManyWithoutUtxoInput = {
+    create?: XOR<MultiAssetCreateWithoutUtxoInput, MultiAssetUncheckedCreateWithoutUtxoInput> | MultiAssetCreateWithoutUtxoInput[] | MultiAssetUncheckedCreateWithoutUtxoInput[]
+    connectOrCreate?: MultiAssetCreateOrConnectWithoutUtxoInput | MultiAssetCreateOrConnectWithoutUtxoInput[]
+    createMany?: MultiAssetCreateManyUtxoInputEnvelope
+    connect?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+  }
+
+  export type MultiAssetUpdateManyWithoutUtxoNestedInput = {
+    create?: XOR<MultiAssetCreateWithoutUtxoInput, MultiAssetUncheckedCreateWithoutUtxoInput> | MultiAssetCreateWithoutUtxoInput[] | MultiAssetUncheckedCreateWithoutUtxoInput[]
+    connectOrCreate?: MultiAssetCreateOrConnectWithoutUtxoInput | MultiAssetCreateOrConnectWithoutUtxoInput[]
+    upsert?: MultiAssetUpsertWithWhereUniqueWithoutUtxoInput | MultiAssetUpsertWithWhereUniqueWithoutUtxoInput[]
+    createMany?: MultiAssetCreateManyUtxoInputEnvelope
+    set?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    disconnect?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    delete?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    connect?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    update?: MultiAssetUpdateWithWhereUniqueWithoutUtxoInput | MultiAssetUpdateWithWhereUniqueWithoutUtxoInput[]
+    updateMany?: MultiAssetUpdateManyWithWhereWithoutUtxoInput | MultiAssetUpdateManyWithWhereWithoutUtxoInput[]
+    deleteMany?: MultiAssetScalarWhereInput | MultiAssetScalarWhereInput[]
+  }
+
+  export type MultiAssetUncheckedUpdateManyWithoutUtxoNestedInput = {
+    create?: XOR<MultiAssetCreateWithoutUtxoInput, MultiAssetUncheckedCreateWithoutUtxoInput> | MultiAssetCreateWithoutUtxoInput[] | MultiAssetUncheckedCreateWithoutUtxoInput[]
+    connectOrCreate?: MultiAssetCreateOrConnectWithoutUtxoInput | MultiAssetCreateOrConnectWithoutUtxoInput[]
+    upsert?: MultiAssetUpsertWithWhereUniqueWithoutUtxoInput | MultiAssetUpsertWithWhereUniqueWithoutUtxoInput[]
+    createMany?: MultiAssetCreateManyUtxoInputEnvelope
+    set?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    disconnect?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    delete?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    connect?: MultiAssetWhereUniqueInput | MultiAssetWhereUniqueInput[]
+    update?: MultiAssetUpdateWithWhereUniqueWithoutUtxoInput | MultiAssetUpdateWithWhereUniqueWithoutUtxoInput[]
+    updateMany?: MultiAssetUpdateManyWithWhereWithoutUtxoInput | MultiAssetUpdateManyWithWhereWithoutUtxoInput[]
+    deleteMany?: MultiAssetScalarWhereInput | MultiAssetScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -6565,6 +9512,33 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
+  }
+
   export type AddressToWatchCreateWithoutTransactionsInput = {
     key: string
     value: string
@@ -6662,6 +9636,110 @@ export namespace Prisma {
     BlockSlot?: IntFilter<"Transaction"> | number
   }
 
+  export type UtxoCreateWithoutMultiAssetInput = {
+    txHash: string
+    index: number
+    address: string
+    plutusData?: string | null
+    scriptRef?: string | null
+    coin: bigint | number
+  }
+
+  export type UtxoUncheckedCreateWithoutMultiAssetInput = {
+    id?: number
+    txHash: string
+    index: number
+    address: string
+    plutusData?: string | null
+    scriptRef?: string | null
+    coin: bigint | number
+  }
+
+  export type UtxoCreateOrConnectWithoutMultiAssetInput = {
+    where: UtxoWhereUniqueInput
+    create: XOR<UtxoCreateWithoutMultiAssetInput, UtxoUncheckedCreateWithoutMultiAssetInput>
+  }
+
+  export type UtxoUpsertWithoutMultiAssetInput = {
+    update: XOR<UtxoUpdateWithoutMultiAssetInput, UtxoUncheckedUpdateWithoutMultiAssetInput>
+    create: XOR<UtxoCreateWithoutMultiAssetInput, UtxoUncheckedCreateWithoutMultiAssetInput>
+    where?: UtxoWhereInput
+  }
+
+  export type UtxoUpdateToOneWithWhereWithoutMultiAssetInput = {
+    where?: UtxoWhereInput
+    data: XOR<UtxoUpdateWithoutMultiAssetInput, UtxoUncheckedUpdateWithoutMultiAssetInput>
+  }
+
+  export type UtxoUpdateWithoutMultiAssetInput = {
+    txHash?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    plutusData?: NullableStringFieldUpdateOperationsInput | string | null
+    scriptRef?: NullableStringFieldUpdateOperationsInput | string | null
+    coin?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type UtxoUncheckedUpdateWithoutMultiAssetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    txHash?: StringFieldUpdateOperationsInput | string
+    index?: IntFieldUpdateOperationsInput | number
+    address?: StringFieldUpdateOperationsInput | string
+    plutusData?: NullableStringFieldUpdateOperationsInput | string | null
+    scriptRef?: NullableStringFieldUpdateOperationsInput | string | null
+    coin?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MultiAssetCreateWithoutUtxoInput = {
+    policyId: string
+    assetName: string
+    quantity: bigint | number
+  }
+
+  export type MultiAssetUncheckedCreateWithoutUtxoInput = {
+    id?: number
+    policyId: string
+    assetName: string
+    quantity: bigint | number
+  }
+
+  export type MultiAssetCreateOrConnectWithoutUtxoInput = {
+    where: MultiAssetWhereUniqueInput
+    create: XOR<MultiAssetCreateWithoutUtxoInput, MultiAssetUncheckedCreateWithoutUtxoInput>
+  }
+
+  export type MultiAssetCreateManyUtxoInputEnvelope = {
+    data: MultiAssetCreateManyUtxoInput | MultiAssetCreateManyUtxoInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MultiAssetUpsertWithWhereUniqueWithoutUtxoInput = {
+    where: MultiAssetWhereUniqueInput
+    update: XOR<MultiAssetUpdateWithoutUtxoInput, MultiAssetUncheckedUpdateWithoutUtxoInput>
+    create: XOR<MultiAssetCreateWithoutUtxoInput, MultiAssetUncheckedCreateWithoutUtxoInput>
+  }
+
+  export type MultiAssetUpdateWithWhereUniqueWithoutUtxoInput = {
+    where: MultiAssetWhereUniqueInput
+    data: XOR<MultiAssetUpdateWithoutUtxoInput, MultiAssetUncheckedUpdateWithoutUtxoInput>
+  }
+
+  export type MultiAssetUpdateManyWithWhereWithoutUtxoInput = {
+    where: MultiAssetScalarWhereInput
+    data: XOR<MultiAssetUpdateManyMutationInput, MultiAssetUncheckedUpdateManyWithoutUtxoInput>
+  }
+
+  export type MultiAssetScalarWhereInput = {
+    AND?: MultiAssetScalarWhereInput | MultiAssetScalarWhereInput[]
+    OR?: MultiAssetScalarWhereInput[]
+    NOT?: MultiAssetScalarWhereInput | MultiAssetScalarWhereInput[]
+    id?: IntFilter<"MultiAsset"> | number
+    policyId?: StringFilter<"MultiAsset"> | string
+    assetName?: StringFilter<"MultiAsset"> | string
+    quantity?: BigIntFilter<"MultiAsset"> | bigint | number
+    utxoId?: IntNullableFilter<"MultiAsset"> | number | null
+  }
+
   export type AddressToWatchUpdateWithoutTransactionsInput = {
     key?: StringFieldUpdateOperationsInput | string
     value?: StringFieldUpdateOperationsInput | string
@@ -6709,6 +9787,33 @@ export namespace Prisma {
     cbor?: StringFieldUpdateOperationsInput | string
     BlockHash?: StringFieldUpdateOperationsInput | string
     BlockSlot?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MultiAssetCreateManyUtxoInput = {
+    id?: number
+    policyId: string
+    assetName: string
+    quantity: bigint | number
+  }
+
+  export type MultiAssetUpdateWithoutUtxoInput = {
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MultiAssetUncheckedUpdateWithoutUtxoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MultiAssetUncheckedUpdateManyWithoutUtxoInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    policyId?: StringFieldUpdateOperationsInput | string
+    assetName?: StringFieldUpdateOperationsInput | string
+    quantity?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
 

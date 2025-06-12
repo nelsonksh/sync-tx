@@ -149,6 +149,24 @@ exports.Prisma.AddressToWatchSyncTipScalarFieldEnum = {
   blockHash: 'blockHash'
 };
 
+exports.Prisma.MultiAssetScalarFieldEnum = {
+  id: 'id',
+  policyId: 'policyId',
+  assetName: 'assetName',
+  quantity: 'quantity',
+  utxoId: 'utxoId'
+};
+
+exports.Prisma.UtxoScalarFieldEnum = {
+  id: 'id',
+  txHash: 'txHash',
+  index: 'index',
+  address: 'address',
+  plutusData: 'plutusData',
+  scriptRef: 'scriptRef',
+  coin: 'coin'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -164,20 +182,22 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 exports.LocalStateType = exports.$Enums.LocalStateType = {
-  Unspecified: 'Unspecified',
   Course: 'Course',
   Assignment: 'Assignment',
   ModuleRef: 'ModuleRef',
   Treasury: 'Treasury',
   Escrow: 'Escrow',
-  ContributorState: 'ContributorState'
+  ContributorState: 'ContributorState',
+  Unspecified: 'Unspecified'
 };
 
 exports.Prisma.ModelName = {
   Transaction: 'Transaction',
   TransactionSyncTip: 'TransactionSyncTip',
   AddressToWatch: 'AddressToWatch',
-  AddressToWatchSyncTip: 'AddressToWatchSyncTip'
+  AddressToWatchSyncTip: 'AddressToWatchSyncTip',
+  MultiAsset: 'MultiAsset',
+  Utxo: 'Utxo'
 };
 
 /**

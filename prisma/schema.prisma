@@ -12,7 +12,7 @@ model Transaction {
   id        Int              @id @default(autoincrement())
   txHash    String           @unique
   cbor      String
-  addresses AddressToWatch[]
+  addresses AddressToWatch[] @relation("AddressToWatchToTransaction")
   BlockHash String
   BlockSlot Int
 
@@ -25,24 +25,14 @@ model TransactionSyncTip {
   blockHash String @unique
 }
 
-enum LocalStateType {
-  Unspecified
-  Course
-  Assignment
-  ModuleRef
-  Treasury
-  Escrow
-  ContributorState
-}
-
 model AddressToWatch {
   id                    Int             @id @default(autoincrement())
   key                   String
   value                 String          @unique
-  type                  LocalStateType? // Optional enum field
-  transactions          Transaction[]
+  type                  LocalStateType?
   introducedAtBlockHash String?
   introducedAtSlot      Int?
+  transactions          Transaction[]   @relation("AddressToWatchToTransaction")
 
   @@index([key])
   @@index([type])
@@ -52,4 +42,40 @@ model AddressToWatchSyncTip {
   id        Int    @id @default(autoincrement())
   slot      Int    @unique
   blockHash String @unique
+}
+
+model MultiAsset {
+  id        Int    @id @default(autoincrement())
+  policyId  String
+  assetName String
+  quantity  BigInt
+  utxoId    Int?
+  Utxo      Utxo?  @relation(fields: [utxoId], references: [id])
+
+  @@index([policyId, assetName])
+  @@index([policyId])
+}
+
+model Utxo {
+  id         Int          @id @default(autoincrement())
+  txHash     String
+  index      Int
+  address    String
+  plutusData String?
+  scriptRef  String?
+  coin       BigInt
+  MultiAsset MultiAsset[]
+
+  @@unique([txHash, index])
+  @@index([address])
+}
+
+enum LocalStateType {
+  Course
+  Assignment
+  ModuleRef
+  Treasury
+  Escrow
+  ContributorState
+  Unspecified
 }
