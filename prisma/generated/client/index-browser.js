@@ -120,41 +120,61 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.TransactionScalarFieldEnum = {
+exports.Prisma.NetworkTxCborScalarFieldEnum = {
   id: 'id',
   txHash: 'txHash',
   cbor: 'cbor',
-  BlockHash: 'BlockHash',
-  BlockSlot: 'BlockSlot'
+  validator: 'validator',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.NetworkTxOutputScalarFieldEnum = {
+  id: 'id',
+  utxoId: 'utxoId',
+  validator: 'validator',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.InstanceScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  hash: 'hash',
+  address: 'address',
+  instancePolicyId: 'instancePolicyId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProjectDetailsScalarFieldEnum = {
+  id: 'id',
+  projectNftPolicy: 'projectNftPolicy',
+  TreasuryTokenPolicy: 'TreasuryTokenPolicy',
+  TreasuryAddress: 'TreasuryAddress',
+  ContributorStateAddress: 'ContributorStateAddress',
+  EscrowAddress: 'EscrowAddress',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LocalStateTxCborScalarFieldEnum = {
+  id: 'id',
+  txHash: 'txHash',
+  cbor: 'cbor',
+  localStatePolicy: 'localStatePolicy',
+  validator: 'validator',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LocalStateTxOutputScalarFieldEnum = {
+  id: 'id',
+  utxoId: 'utxoId',
+  localStatePolicy: 'localStatePolicy',
+  validator: 'validator',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.TransactionSyncTipScalarFieldEnum = {
   id: 'id',
   slot: 'slot',
   blockHash: 'blockHash'
-};
-
-exports.Prisma.AddressToWatchScalarFieldEnum = {
-  id: 'id',
-  key: 'key',
-  value: 'value',
-  type: 'type',
-  introducedAtBlockHash: 'introducedAtBlockHash',
-  introducedAtSlot: 'introducedAtSlot'
-};
-
-exports.Prisma.AddressToWatchSyncTipScalarFieldEnum = {
-  id: 'id',
-  slot: 'slot',
-  blockHash: 'blockHash'
-};
-
-exports.Prisma.MultiAssetScalarFieldEnum = {
-  id: 'id',
-  policyId: 'policyId',
-  assetName: 'assetName',
-  quantity: 'quantity',
-  utxoId: 'utxoId'
 };
 
 exports.Prisma.UtxoScalarFieldEnum = {
@@ -165,6 +185,20 @@ exports.Prisma.UtxoScalarFieldEnum = {
   plutusData: 'plutusData',
   scriptRef: 'scriptRef',
   coin: 'coin'
+};
+
+exports.Prisma.MultiAssetScalarFieldEnum = {
+  id: 'id',
+  policyId: 'policyId',
+  assetName: 'assetName',
+  quantity: 'quantity',
+  utxoId: 'utxoId'
+};
+
+exports.Prisma.InstancePolicyScalarFieldEnum = {
+  id: 'id',
+  policyId: 'policyId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -181,23 +215,34 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.LocalStateType = exports.$Enums.LocalStateType = {
-  Course: 'Course',
-  Assignment: 'Assignment',
-  ModuleRef: 'ModuleRef',
-  Treasury: 'Treasury',
-  Escrow: 'Escrow',
-  ContributorState: 'ContributorState',
-  Unspecified: 'Unspecified'
+exports.NetworkValidator = exports.$Enums.NetworkValidator = {
+  AliasIndexValidator: 'AliasIndexValidator',
+  GlobalStateValidator: 'GlobalStateValidator',
+  GovernanceValidator: 'GovernanceValidator',
+  InstanceValidator: 'InstanceValidator'
+};
+
+exports.ScriptCategory = exports.$Enums.ScriptCategory = {
+  ModuleScripts: 'ModuleScripts',
+  CourseStateScripts: 'CourseStateScripts',
+  AssignmentValidator: 'AssignmentValidator',
+  TreasuryScripts: 'TreasuryScripts',
+  TreasuryToken: 'TreasuryToken',
+  Escrow1: 'Escrow1',
+  ContributorStateScripts: 'ContributorStateScripts'
 };
 
 exports.Prisma.ModelName = {
-  Transaction: 'Transaction',
+  NetworkTxCbor: 'NetworkTxCbor',
+  NetworkTxOutput: 'NetworkTxOutput',
+  Instance: 'Instance',
+  ProjectDetails: 'ProjectDetails',
+  LocalStateTxCbor: 'LocalStateTxCbor',
+  LocalStateTxOutput: 'LocalStateTxOutput',
   TransactionSyncTip: 'TransactionSyncTip',
-  AddressToWatch: 'AddressToWatch',
-  AddressToWatchSyncTip: 'AddressToWatchSyncTip',
+  Utxo: 'Utxo',
   MultiAsset: 'MultiAsset',
-  Utxo: 'Utxo'
+  InstancePolicy: 'InstancePolicy'
 };
 
 /**

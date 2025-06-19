@@ -8,42 +8,111 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Transaction {
+/// ==============================
+/// 🔶 CORE MODELS (High Priority)
+/// ==============================
+
+/// Captures full CBOR for key transactions (primary debug and data source)
+model NetworkTxCbor {
   id        Int              @id @default(autoincrement())
   txHash    String           @unique
   cbor      String
-  addresses AddressToWatch[] @relation("AddressToWatchToTransaction")
-  BlockHash String
-  BlockSlot Int
+  validator NetworkValidator
+  createdAt DateTime         @default(now())
 
   @@index([txHash])
 }
 
+/// Maps UTxOs to validator types, useful for post-processing output usage
+model NetworkTxOutput {
+  id        Int              @id @default(autoincrement())
+  utxoId    Int
+  utxo      Utxo             @relation(fields: [utxoId], references: [id])
+  validator NetworkValidator
+  createdAt DateTime         @default(now())
+
+  @@index([validator])
+}
+
+/// Represents deployed on-chain scripts (by type and policy)
+model Instance {
+  id               Int            @id @default(autoincrement())
+  type             ScriptCategory
+  hash             String         @unique
+  address          String         @unique
+  instancePolicyId Int
+  instancePolicy   InstancePolicy @relation(fields: [instancePolicyId], references: [id])
+  createdAt        DateTime       @default(now())
+
+  @@index([type])
+}
+
+/// Ties a group of script instances into a project-level abstraction
+model ProjectDetails {
+  id                      Int      @id @default(autoincrement())
+  projectNftPolicy        String   @unique
+  TreasuryTokenPolicy     String?
+  TreasuryAddress         String?
+  ContributorStateAddress String?
+  EscrowAddress           String?
+  createdAt               DateTime @default(now())
+
+  @@index([projectNftPolicy])
+}
+
+/// Captures CBOR content for stateful transactions
+model LocalStateTxCbor {
+  id               Int            @id @default(autoincrement())
+  txHash           String         @unique
+  cbor             String
+  localStatePolicy String
+  validator        ScriptCategory
+  createdAt        DateTime       @default(now())
+
+  @@index([txHash])
+}
+
+/// Maps local state transactions to outputs by validator
+model LocalStateTxOutput {
+  id               Int            @id @default(autoincrement())
+  utxoId           Int
+  utxo             Utxo           @relation(fields: [utxoId], references: [id])
+  localStatePolicy String
+  validator        ScriptCategory
+  createdAt        DateTime       @default(now())
+
+  @@index([localStatePolicy, validator])
+}
+
+/// ==============================
+/// 🔸 SUPPORTING MODELS
+/// ==============================
+
+/// Stores synced slot tips for network txs
 model TransactionSyncTip {
   id        Int    @id @default(autoincrement())
   slot      Int    @unique
   blockHash String @unique
 }
 
-model AddressToWatch {
-  id                    Int             @id @default(autoincrement())
-  key                   String
-  value                 String          @unique
-  type                  LocalStateType?
-  introducedAtBlockHash String?
-  introducedAtSlot      Int?
-  transactions          Transaction[]   @relation("AddressToWatchToTransaction")
+/// Raw on-chain outputs and associated data (used by multiple systems)
+model Utxo {
+  id                 Int                  @id @default(autoincrement())
+  txHash             String
+  index              Int
+  address            String
+  plutusData         String?
+  scriptRef          String?
+  coin               BigInt
+  MultiAsset         MultiAsset[]
+  NetworkTxOutput    NetworkTxOutput[]
+  LocalStateTxOutput LocalStateTxOutput[]
 
-  @@index([key])
-  @@index([type])
+  @@unique([txHash, index])
+  @@index([address])
 }
 
-model AddressToWatchSyncTip {
-  id        Int    @id @default(autoincrement())
-  slot      Int    @unique
-  blockHash String @unique
-}
-
+/// Represents multi-assets contained within a UTxO
 model MultiAsset {
   id        Int    @id @default(autoincrement())
   policyId  String
@@ -56,26 +125,31 @@ model MultiAsset {
   @@index([policyId])
 }
 
-model Utxo {
-  id         Int          @id @default(autoincrement())
-  txHash     String
-  index      Int
-  address    String
-  plutusData String?
-  scriptRef  String?
-  coin       BigInt
-  MultiAsset MultiAsset[]
-
-  @@unique([txHash, index])
-  @@index([address])
+/// Represents the top-level NFT policy used to group `Instance`s
+model InstancePolicy {
+  id        Int        @id @default(autoincrement())
+  policyId  String     @unique
+  createdAt DateTime   @default(now())
+  Instance  Instance[]
 }
 
-enum LocalStateType {
-  Course
-  Assignment
-  ModuleRef
-  Treasury
-  Escrow
-  ContributorState
-  Unspecified
+/// ==============================
+/// ⚙ ENUMS
+/// ==============================
+
+enum ScriptCategory {
+  ModuleScripts
+  CourseStateScripts
+  AssignmentValidator
+  TreasuryScripts
+  TreasuryToken
+  Escrow1
+  ContributorStateScripts
+}
+
+enum NetworkValidator {
+  AliasIndexValidator
+  GlobalStateValidator
+  GovernanceValidator
+  InstanceValidator
 }

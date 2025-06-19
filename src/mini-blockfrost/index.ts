@@ -1,5 +1,6 @@
+require('dotenv').config();
 
-export class MiniBlockfrost {
+class MiniBlockfrost {
     private baseUrl: string;
 
     constructor(url: string) {
@@ -94,3 +95,5 @@ export class MiniBlockfrost {
         return addresses
     }
 }
+
+export const miniBlockfrost = new MiniBlockfrost(process.env.DOLOS_MINI_BLOCKFROST || "http://localhost:3000");

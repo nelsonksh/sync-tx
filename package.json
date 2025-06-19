@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "scripts": {
     "db:pull": "prisma db pull",
     "db:generate": "prisma generate",
@@ -20,10 +17,13 @@
   "license": "ISC",
   "packageManager": "pnpm@10.7.0",
   "dependencies": {
+    "@andamiojs/sdk": "link:../node-sdk",
     "@meshsdk/common": "1.9.0-beta.47",
     "@meshsdk/core": "1.9.0-beta.47",
     "@meshsdk/core-csl": "1.9.0-beta.47",
+    "@meshsdk/core-cst": "1.9.0-beta.55",
     "@prisma/client": "6.8.2",
+    "@utxorpc/sdk": "^0.6.7",
     "cbor": "^10.0.3",
     "dotenv": "^16.5.0",
     "prisma": "^6.8.2",
@@ -31,5 +31,10 @@
   },
   "devDependencies": {
     "typescript": "^5.8.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@andamiojs/sdk": "link:../node-sdk"
+    }
   }
 }

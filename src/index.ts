@@ -1,38 +1,36 @@
-require('dotenv').config()
+require('dotenv').config();
 
 import { PrismaClient } from '../prisma/generated/client';
-import { syncInstanceAddresses } from './sync/sync-instance-addresses';
-import { MiniBlockfrost } from './mini-bf';
-import andamioConfig from "./config/andamio-config-preprod.json"
-import { syncTxs } from './sync/sync-txs';
-import { syncUtxos } from './sync/sync-utxos';
+import { syncTxs } from './mini-blockfrost/sync-txs';
+import { SyncInstancesInfo } from './u5c/sync-instances-info';
+import { SyncProjectsInfo } from './u5c/sync-projects-info';
 
-const miniBlockfrost = new MiniBlockfrost(process.env.DOLOS_MINI_BLOCKFROST || "http://localhost:50051");
+const prisma = new PrismaClient();
 
 async function main() {
-    while (true) {
-        try {
-            console.log("Starting sync...");
-            await syncInstanceAddresses(miniBlockfrost, "Preprod", andamioConfig);
-            await syncTxs(miniBlockfrost);
-            console.log("Sync complete. Sleeping...");
-            await new Promise(resolve => setTimeout(resolve, 60000));
-        } catch (error) {
-            console.error("Error in sync loop:", error);
-            await new Promise(resolve => setTimeout(resolve, 15000)); // backoff
-        }
+    try {
+
+        await SyncInstancesInfo(prisma);
+        await SyncProjectsInfo(prisma);
+        await syncTxs(prisma);
+
+    } catch (error) {
+        console.error("Error in main:", error);
+    } finally {
+        gracefulShutdown();
     }
 }
 
-process.on('SIGINT', async () => {
-    console.log("Shutting down gracefully...");
-    process.exit(0);
-});
+function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-process.on('SIGTERM', async () => {
-    console.log("Shutting down gracefully...");
-    process.exit(0);
-});
+function gracefulShutdown() {
+    console.log("🛑 Shutting down gracefully...");
+    prisma.$disconnect().then(() => process.exit(0));
+}
 
+process.on('SIGINT', gracefulShutdown);
+process.on('SIGTERM', gracefulShutdown);
 
 main();

@@ -1,6 +1,6 @@
 import { PrismaClient } from "../../prisma/generated/client";
 import seed from "../seed.json";
-import { MiniBlockfrost } from "../mini-bf";
+import { MiniBlockfrost } from "../mini-blockfrost";
 import { saveUtxos } from "./sync-utxos";
 
 export async function syncTxs(miniBlockfrost: MiniBlockfrost) {

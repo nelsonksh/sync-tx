@@ -1,31 +1,32 @@
 /**
  * Represents the different network environments available.
- *
- * @typedef {("Mainnet" | "Preprod" | "Preview")} Network
- *
- * @property {"Mainnet"} Mainnet - The main network environment.
- * @property {"Preprod"} Preprod - The pre-production network environment.
- * @property {"Preview"} Preview - The preview network environment.
  */
-export type Network = "Mainnet" | "Preprod" | "Preview";
+export type NetworkType = "Mainnet" | "Preprod" | "Preview";
 
 /**
- * A record that maps network names to their corresponding numeric IDs.
- *
- * @remarks
- * This constant is used to identify different network environments by their unique IDs.
- *
- * @example
- * Here's how you can use the `NetworkId` to get the ID of the Mainnet:
- * ```typescript
- * const mainnetId = NetworkId.Mainnet; // 1
- * ```
- *
- * @typeParam Network - The type representing the network names.
- * @typeParam number - The type representing the network IDs.
+ * Maps each network name to its corresponding numeric ID.
  */
-export const NetworkId: Record<Network, number> = {
+export type NetworkIdMap = {
+    Mainnet: 1;
+    Preprod: 0;
+    Preview: 0;
+};
+
+/**
+ * Runtime record of network names to their corresponding IDs.
+ */
+export const NETWORK_IDS: NetworkIdMap = {
     Mainnet: 1,
     Preprod: 0,
     Preview: 0,
 };
+
+/**
+ * The current network selected via environment variable or defaulting to Preprod.
+ */
+export const Network: NetworkType = (process.env.NETWORK as NetworkType) || "Preprod";
+
+/**
+ * The numeric ID for the current network.
+ */
+export const NetworkId: 0 | 1 = NETWORK_IDS[Network];

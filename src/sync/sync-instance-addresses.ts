@@ -5,7 +5,7 @@ import { deserializeTx } from "@meshsdk/core-csl";
 import { Transaction } from "../types/transaction";
 import { deriveInstanceAddress } from "../utils/derive-instance-address";
 import { hexToString } from "@meshsdk/common";
-import { MiniBlockfrost } from "../mini-bf";
+import { MiniBlockfrost } from "../mini-blockfrost";
 import { Network } from "../types/network";
 import { AndamioConfig } from "../types/andamio-config";
 

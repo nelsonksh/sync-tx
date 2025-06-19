@@ -4,10 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@andamiojs/sdk': link:../node-sdk
+
 importers:
 
   .:
     dependencies:
+      '@andamiojs/sdk':
+        specifier: link:../node-sdk
+        version: link:../node-sdk
       '@meshsdk/common':
         specifier: 1.9.0-beta.47
         version: 1.9.0-beta.47
@@ -17,9 +23,15 @@ importers:
       '@meshsdk/core-csl':
         specifier: 1.9.0-beta.47
         version: 1.9.0-beta.47
+      '@meshsdk/core-cst':
+        specifier: 1.9.0-beta.55
+        version: 1.9.0-beta.55(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
       '@prisma/client':
         specifier: 6.8.2
         version: 6.8.2(prisma@6.8.2(typescript@5.8.3))(typescript@5.8.3)
+      '@utxorpc/sdk':
+        specifier: ^0.6.7
+        version: 0.6.7(@bufbuild/protobuf@1.10.1)
       cbor:
         specifier: ^10.0.3
         version: 10.0.3
@@ -479,11 +491,17 @@ packages:
   '@meshsdk/common@1.9.0-beta.47':
     resolution: {integrity: sha512-Hj6ws/wptwXn1hxG4Pq29GHlQtwIx9J7WUrA3TkSHw/5ztqyMrBbt5++w4jEn3AJHu8zg0po+MaHZFp4LHzNwQ==}
 
+  '@meshsdk/common@1.9.0-beta.55':
+    resolution: {integrity: sha512-BgpyYbo4Yo0wWBJhqoFT2Avi3yba0vvgJHWhq/GeWF/iLuUAtu+L4GCdgMKqYE5Hib/T6RCP6w6ROy3ODxGszw==}
+
   '@meshsdk/core-csl@1.9.0-beta.47':
     resolution: {integrity: sha512-onyddo1TUGKghZA+utVw2tgYgPaI8PCgYL3TiUmeHg88C2U3rZS0+tEqTZh5yJoXk2zGUfFquE+LqwR2rgUSXw==}
 
   '@meshsdk/core-cst@1.9.0-beta.47':
     resolution: {integrity: sha512-/BBryx1G6VUrK+letWQRgVWHL+kTWbsBw1fprarvLetp1CWfbUlSq8oMFANBK/dyxHYHkwm8+0SoEzH741DmvQ==}
+
+  '@meshsdk/core-cst@1.9.0-beta.55':
+    resolution: {integrity: sha512-CVfiOaXqFXofM1YpucLPWeQwXTFYkqBohBaInmrhT/d0AUAH3Le9a9cfa8zW4zpS6HWnu3V4130McE1KAKZ8mQ==}
 
   '@meshsdk/core@1.9.0-beta.47':
     resolution: {integrity: sha512-H63RvN4oj6YshhJ4mJFkBADrSwxXKFYoYCZ1+jhZgox/F1NBrKw4f6nOJovvxNPUXuRiNHHiml/DexQlVfxY1w==}
@@ -2826,6 +2844,13 @@ snapshots:
       blake2b: 2.1.4
       blakejs: 1.2.1
 
+  '@meshsdk/common@1.9.0-beta.55':
+    dependencies:
+      bech32: 2.0.0
+      bip39: 3.1.0
+      blake2b: 2.1.4
+      blakejs: 1.2.1
+
   '@meshsdk/core-csl@1.9.0-beta.47':
     dependencies:
       '@meshsdk/common': 1.9.0-beta.47
@@ -2847,6 +2872,33 @@ snapshots:
       '@harmoniclabs/plutus-data': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)
       '@harmoniclabs/uplc': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(@harmoniclabs/plutus-data@1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0))
       '@meshsdk/common': 1.9.0-beta.47
+      '@types/base32-encoding': 1.0.2
+      base32-encoding: 1.0.0
+      bech32: 2.0.0
+      blakejs: 1.2.1
+      bn.js: 5.2.2
+    transitivePeerDependencies:
+      - '@dcspark/cardano-multiplatform-lib-asmjs'
+      - '@dcspark/cardano-multiplatform-lib-browser'
+      - '@dcspark/cardano-multiplatform-lib-nodejs'
+      - '@harmoniclabs/bytestring'
+      - '@harmoniclabs/crypto'
+      - bufferutil
+      - encoding
+      - rxjs
+      - utf-8-validate
+
+  '@meshsdk/core-cst@1.9.0-beta.55(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
+    dependencies:
+      '@cardano-sdk/core': 0.45.8(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
+      '@cardano-sdk/crypto': 0.2.3
+      '@cardano-sdk/input-selection': 0.13.34(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
+      '@cardano-sdk/util': 0.15.7
+      '@harmoniclabs/cbor': 1.3.0
+      '@harmoniclabs/pair': 1.0.0
+      '@harmoniclabs/plutus-data': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)
+      '@harmoniclabs/uplc': 1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0)(@harmoniclabs/crypto@0.2.5)(@harmoniclabs/pair@1.0.0)(@harmoniclabs/plutus-data@1.2.4(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/cbor@1.3.0))
+      '@meshsdk/common': 1.9.0-beta.55
       '@types/base32-encoding': 1.0.2
       base32-encoding: 1.0.0
       bech32: 2.0.0
@@ -2985,7 +3037,7 @@ snapshots:
   '@meshsdk/web3-sdk@0.0.26(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)':
     dependencies:
       '@meshsdk/common': 1.9.0-beta.47
-      '@meshsdk/core-cst': 1.9.0-beta.47(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
+      '@meshsdk/core-cst': 1.9.0-beta.55(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
       '@meshsdk/wallet': 1.9.0-beta.47(@harmoniclabs/bytestring@1.0.0)(@harmoniclabs/crypto@0.2.5)(bufferutil@4.0.9)(rxjs@7.8.2)(utf-8-validate@6.0.5)
       '@peculiar/webcrypto': 1.5.0
       axios: 1.9.0
